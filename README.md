@@ -2,9 +2,17 @@
 
 主技能名为 `debatingspeech`。写稿、API 接入与 DOCX 交付已合并到唯一的 `SKILL.md`，不再安装多个子技能。详细教程与研究记录放在 references 中，按需读取，不必全部粘贴进输入框。
 
+**当前版本：v2.4** ｜ [更新记录](CHANGELOG.md) ｜ [GitHub 仓库](https://github.com/YeYan23333/debatingspeech)
+
 ## 安装与使用
 
-解压后，将整个 `debatingskills` 目录复制到你的技能目录，安装后的文件夹命名为 `debatingspeech`，使其与 `SKILL.md` 的 name 一致。保留配套脚本和参考文件，勿只复制 SKILL.md。原有常用安装示例为 `~/.codex/skills/debatingspeech/`；已有项目环境继续使用其配置的技能目录即可。
+仓库根目录就是技能目录，克隆后文件夹名正好与 `SKILL.md` 的 name 一致：
+
+```powershell
+git clone https://github.com/YeYan23333/debatingspeech.git "$env:USERPROFILE\.dsh\skills\debatingspeech"
+```
+
+macOS/Linux 用 `git clone https://github.com/YeYan23333/debatingspeech.git ~/.dsh/skills/debatingspeech`。也可以解压发行包，将整个目录复制到你的技能目录并命名为 `debatingspeech`；保留配套脚本和参考文件，勿只复制 SKILL.md。原有常用安装示例为 `~/.codex/skills/debatingspeech/`；已有项目环境继续使用其配置的技能目录即可。
 
 新对话开场简短说明可写改一辩稿、核验学理案例、生成Word，以及帮助接入API并做连通性测试，再给出写稿三要点：完整辩题、正方或反方、发言时长。已有信息不重复询问；明确的API任务直接处理。
 

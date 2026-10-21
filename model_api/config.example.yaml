@@ -1,0 +1,153 @@
+# =====================================================================
+# 华语辩论 Skill 多模型 API 配置模板
+# 说明：protocol = 请求协议；provider key = 服务商/路由别名；model = 服务商侧模型 ID。
+# API Key 只从 api_key_env 指定的环境变量读取，不要把真实密钥写进本文件。
+# 复制为 config.yaml 后，按自己开通的服务修改 model、base_url 和参数。
+# =====================================================================
+
+# 默认演示：直接使用你已接入的 Xiaomi MiMo API。
+# 如果希望多模型协作，可以把下面的角色映射改成 deepseek / claude_opus 等。
+default_provider: mimo
+
+# 这些是本项目内部任务角色，不是服务商 API 名称。
+roles:
+  research_synthesis: mimo  # 资料综合阶段 -> Xiaomi MiMo API
+  drafting: mimo            # 一辩稿撰写阶段 -> Xiaomi MiMo API
+  review: mimo              # 逻辑/引用/口播审稿阶段 -> Xiaomi MiMo API
+
+providers:
+  # -------------------------------------------------------------------
+  # 服务商：OpenAI
+  # 产品/接口：OpenAI Responses API
+  # 协议标识：openai_responses
+  # Codex 说明：这里调用 OpenAI API，不会启动本地 Codex CLI。
+  # 注意：model 必须填写当前 API 账户有权限调用的模型 ID。
+  # 官方文档：https://platform.openai.com/docs/api-reference/responses
+  # -------------------------------------------------------------------
+  codex:
+    protocol: openai_responses
+    base_url: https://api.openai.com/v1
+    api_key_env: OPENAI_API_KEY
+    model: YOUR_OPENAI_RESPONSES_MODEL_ID
+    max_tokens: 4096
+    timeout_seconds: 180
+
+  # -------------------------------------------------------------------
+  # 服务商：Anthropic
+  # 产品/接口：Anthropic Messages API
+  # 模型系列：Claude（具体型号由 model 字段决定）
+  # 协议标识：anthropic_messages
+  # 官方文档：https://docs.anthropic.com/en/api/messages
+  # -------------------------------------------------------------------
+  claude:
+    protocol: anthropic_messages
+    base_url: https://api.anthropic.com
+    api_key_env: ANTHROPIC_API_KEY
+    model: YOUR_CLAUDE_MODEL_ID
+    max_tokens: 4096
+    timeout_seconds: 180
+
+  # -------------------------------------------------------------------
+  # 服务商：Anthropic
+  # 产品/接口：Anthropic Messages API
+  # 模型系列：Claude Opus
+  # 协议标识：anthropic_messages
+  # 与 claude 条目使用同一协议，区别在于 model 应填写可用的 Opus 型号。
+  # 官方文档：https://docs.anthropic.com/en/api/messages
+  # -------------------------------------------------------------------
+  claude_opus:
+    protocol: anthropic_messages
+    base_url: https://api.anthropic.com
+    api_key_env: ANTHROPIC_API_KEY
+    model: YOUR_CLAUDE_OPUS_MODEL_ID
+    max_tokens: 4096
+    timeout_seconds: 180
+
+  # -------------------------------------------------------------------
+  # 服务商：小米 MiMo
+  # 产品/接口：MiMo 平台 API（兼容接口参数以当前官方文档为准）
+  # 本项目适配协议：openai_chat（OpenAI Chat Completions 兼容格式）
+  # API Key 环境变量：MIMO_API_KEY
+  # 官方文档：https://platform.xiaomimimo.com/docs/zh-CN/
+  # 本示例已填写官方模型 ID：mimo-v2.6-pro-ultraspeed。
+  # UltraSpeed 的 RPM/TPM 属定制服务；请确认你的 API 账号已获该模型调用权限。
+  # 注意：若你的 API 来自第三方聚合平台，应改用该平台提供的 Base URL 和模型 ID。
+  # -------------------------------------------------------------------
+  mimo:
+    protocol: openai_chat
+    base_url: https://api.xiaomimimo.com/v1
+    api_key_env: MIMO_API_KEY
+    model: mimo-v2.6-pro-ultraspeed
+    max_tokens: 4096
+    max_tokens_param: max_completion_tokens
+    timeout_seconds: 180
+    # 如果所用型号明确支持，可按官方文档配置服务商专属字段：
+    # extra_body:
+    #   thinking:
+    #     type: enabled
+
+  # -------------------------------------------------------------------
+  # 服务商：DeepSeek
+  # 产品/接口：DeepSeek API
+  # 本项目适配协议：openai_chat（OpenAI Chat Completions 兼容格式）
+  # API Key 环境变量：DEEPSEEK_API_KEY
+  # 官方文档：https://api-docs.deepseek.com/zh-cn/
+  # 注意：model 必须使用当前账户可用的实际模型 ID；示例 ID 可能随产品调整。
+  # -------------------------------------------------------------------
+  deepseek:
+    protocol: openai_chat
+    base_url: https://api.deepseek.com
+    api_key_env: DEEPSEEK_API_KEY
+    model: YOUR_DEEPSEEK_MODEL_ID
+    max_tokens: 4096
+    max_tokens_param: max_tokens
+    timeout_seconds: 180
+
+  # -------------------------------------------------------------------
+  # 服务商：Moonshot AI / Kimi
+  # 产品/接口：Moonshot / Kimi API
+  # 本项目适配协议：openai_chat（OpenAI Chat Completions 兼容格式）
+  # API Key 环境变量：KIMI_API_KEY
+  # 官方文档：https://platform.moonshot.ai/docs/guide/prompt-best-practice
+  # 注意：base_url 应按账户所在平台/区域选择；国际站与中国站地址可能不同。
+  # -------------------------------------------------------------------
+  kimi:
+    protocol: openai_chat
+    base_url: https://api.moonshot.cn/v1
+    api_key_env: KIMI_API_KEY
+    model: YOUR_KIMI_MODEL_ID
+    max_tokens: 4096
+    max_tokens_param: max_tokens
+    timeout_seconds: 180
+
+  # -------------------------------------------------------------------
+  # 服务商：火山引擎（Volcano Engine）
+  # 产品/接口：火山方舟 Ark API
+  # 本项目适配协议：openai_chat（OpenAI SDK / Chat Completions 兼容格式）
+  # API Key 环境变量：ARK_API_KEY
+  # 官方文档：https://docs.volcengine.com/docs/ark/compatible-with-openai-sdk?lang=zh
+  # 注意：Base URL 需匹配开通区域；model 字段可能需要填写 Ark Endpoint ID。
+  # -------------------------------------------------------------------
+  volcengine:
+    protocol: openai_chat
+    base_url: https://ark.cn-beijing.volces.com/api/v3
+    api_key_env: ARK_API_KEY
+    model: YOUR_ARK_MODEL_OR_ENDPOINT_ID
+    max_tokens: 4096
+    max_tokens_param: max_tokens
+    timeout_seconds: 180
+
+  # -------------------------------------------------------------------
+  # 服务商：OpenAI
+  # 产品/接口：OpenAI Chat Completions API（与 Responses API 是不同的接口）
+  # 本项目适配协议：openai_chat
+  # 官方文档：https://platform.openai.com/docs/api-reference/chat
+  # -------------------------------------------------------------------
+  openai_chat:
+    protocol: openai_chat
+    base_url: https://api.openai.com/v1
+    api_key_env: OPENAI_API_KEY
+    model: YOUR_OPENAI_CHAT_MODEL_ID
+    max_tokens: 4096
+    max_tokens_param: max_tokens
+    timeout_seconds: 180

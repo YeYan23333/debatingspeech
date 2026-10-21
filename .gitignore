@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Local API configuration and secrets
+.env
+.env.*
+!.env.example
+model_api/config.yaml
+
+# Generated speeches and local output
+products/
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

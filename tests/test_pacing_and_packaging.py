@@ -80,8 +80,8 @@ class SingleSkillPackageTests(unittest.TestCase):
         self.assertIsNotNone(front_matter, "Root Skill must retain YAML front matter")
         self.assertRegex(front_matter.group(1), r"(?m)^name:\s*debatingspeech\s*$")
 
-    def test_root_skill_and_readme_use_current_pacing(self):
-        for relative in ("SKILL.md", "README.md"):
+    def test_root_skill_and_loaded_style_guide_use_current_pacing(self):
+        for relative in ("SKILL.md", "references/natural-first-speaker-style.md"):
             with self.subTest(file=relative):
                 text = (PROJECT_ROOT / relative).read_text(encoding="utf-8")
                 self.assertNotRegex(text, r"(?<!\d)(?:250|280)(?!\d)")

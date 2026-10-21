@@ -45,17 +45,3 @@ pip install -r requirements.txt
 ```
 
 再按 [API 调用教程](references/api调用教程.md) 配置 `model_api/config.yaml` 与本机 `.env`。仓库里只放示例文件，真实密钥不会上传。
-
-## 目录
-
-| 路径 | 说明 |
-|---|---|
-| `SKILL.md` | 技能入口 |
-| `references/` | 表达指南、赛事来源索引与教程 |
-| `model_api/` | 模型适配器与配置示例 |
-| `skills/一辩稿DOCX输出/scripts/` | 导出与生成脚本 |
-| `tests/` | 回归测试 |
-
-## 反馈
-
-问题或改进建议，欢迎提 Issue 或 PR。

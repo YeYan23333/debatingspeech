@@ -19,7 +19,13 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from model_api.providers import ModelRouter, ProviderError, load_config
-from export_to_docx import build_docx, speech_filename, default_products_dir, completion_message
+from export_to_docx import (
+    ARGUMENT_TABLE_OFFER,
+    build_docx,
+    speech_filename,
+    default_products_dir,
+    completion_message,
+)
 
 
 def read_optional_file(path_value: str | None) -> str:
@@ -196,6 +202,7 @@ def main() -> int:
                 file=sys.stderr,
             )
         print(completion_message(products_dir, default_location=args.products_dir is None))
+        print(ARGUMENT_TABLE_OFFER)
         return 0
     except (ProviderError, OSError, ValueError, RuntimeError) as exc:
         print(f"错误：{exc}", file=sys.stderr)

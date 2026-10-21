@@ -38,14 +38,14 @@ git clone https://github.com/YeYan23333/debatingspeech.git ~/.dsh/skills/debatin
 
 ## 可选：接入模型 API
 
+DSH和豆包这类专用大模型只能调用自家的模型
 如果想让自带脚本直接调用模型生成初稿：
 
 ```powershell
 pip install -r requirements.txt
 ```
 
-再按 [API 调用教程](references/api调用教程.md) 配置 `model_api/config.yaml` 与本机 `.env`。仓库里只放示例文件，真实密钥不会上传。
-
+再按 [API 调用教程](references/api调用教程.md) 配置 `model_api/config.yaml` 与本机 `.env`。
 ## 版本更新公告
 
 ### v2.5 ｜ 2026-10-22

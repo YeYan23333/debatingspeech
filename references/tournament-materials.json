@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "verified_at": "2026-10-21",
+  "scope": "定位与表达研究索引；未下载完整音视频语料，赛事标签和发言事实需分别核验",
+  "tournaments": [
+    {
+      "id": "world-cup",
+      "name": "华语辩论世界杯",
+      "aliases": [
+        "世界杯",
+        "华辩世界杯"
+      ],
+      "entries": [
+        {
+          "url": "https://www.beijing.gov.cn/fuwu/lqfw/gggs/202604/t20260403_4574379.html",
+          "type": "government_event_announcement",
+          "access": "article_read"
+        },
+        {
+          "url": "https://space.bilibili.com/326420434",
+          "type": "organizer_release_account_recorded_in_ORCHID_2023",
+          "access": "entry_only_current_video_unread"
+        }
+      ],
+      "materials": [
+        {
+          "topic": "AI迅猛发展提升了人类创作者存在的意义",
+          "url": "https://debatetimer.cn/record/9818b1d8-cb7d-4d4a-94d1-4474a21ce54b",
+          "type": "community_transcript",
+          "access": "affirmative_opening_transcript_read",
+          "event_identity": "community_label_unverified_against_official_video",
+          "audio_listened": false,
+          "tags": [
+            "AI",
+            "创作者",
+            "意义",
+            "作用机制",
+            "价值评价"
+          ],
+          "method_note": "两论点分别讨论创作行动怎样改变及价值评价怎样改变；不复制抽象措辞，不采用未核验比例或故事。"
+        }
+      ]
+    },
+    {
+      "id": "yunyoo",
+      "name": "云游·国际高校巡回辩论赛",
+      "aliases": [
+        "云游国际高校辩论赛",
+        "云游巡回赛"
+      ],
+      "related_events": [
+        "云游·国际华语辩论邀请赛年度总决赛",
+        "云游·国际华语辩论邀请赛·精英赛"
+      ],
+      "entries": [
+        {
+          "url": "https://news.hqu.edu.cn/info/1019/412582.htm",
+          "type": "university_announcement_and_event_relationship",
+          "access": "article_read"
+        },
+        {
+          "url": "https://www.bilibili.com/video/BV1RAJSzAEoo/",
+          "type": "organizer_video_search_result",
+          "access": "title_account_only_video_unread"
+        }
+      ],
+      "materials": [
+        {
+          "topic": "己所欲，施于人",
+          "url": "https://debatetimer.cn/record/67f520e1-117f-b603-c9e5-82e400000000",
+          "type": "community_transcript",
+          "access": "affirmative_opening_transcript_read",
+          "event_identity": "community_tour_label_unverified_against_official_video",
+          "audio_listened": false,
+          "tags": [
+            "道德",
+            "原则",
+            "判断标准",
+            "价值比较"
+          ],
+          "method_note": "先说明比较对象的行动差别，再以同一标准推进理由；其理论和事件仍须独立核验。"
+        },
+        {
+          "topic": "在当下，全职伴侣是陷阱",
+          "url": "https://debatetimer.cn/record/682ef4f2bf6625518cb6e9e3",
+          "type": "community_transcript",
+          "access": "affirmative_opening_transcript_read",
+          "event_identity": "community_elite_event_label_unverified_against_official_video",
+          "audio_listened": false,
+          "tags": [
+            "全职伴侣",
+            "亲密关系",
+            "风险",
+            "生活选择"
+          ],
+          "method_note": "以时间安排和日常选择的具体变化解释处境；其中匿名故事不作为已核验实例。"
+        }
+      ]
+    },
+    {
+      "id": "icdc",
+      "name": "国际华语辩论邀请赛",
+      "aliases": [
+        "新国辩"
+      ],
+      "entries": [
+        {
+          "url": "https://www.weibo.com/icdc2013?tabtype=home",
+          "type": "organizer_account",
+          "access": "search_identity_only_direct_access_limited"
+        },
+        {
+          "url": "https://space.bilibili.com/257958427",
+          "type": "organizer_release_account_recorded_in_ORCHID_2023",
+          "access": "entry_only_current_video_unread"
+        }
+      ],
+      "materials": []
+    },
+    {
+      "id": "world-chinese-championship",
+      "name": "世界华语辩论锦标赛",
+      "aliases": [
+        "世锦赛"
+      ],
+      "entries": [
+        {
+          "url": "https://space.bilibili.com/387099986",
+          "type": "organizer_release_account_recorded_in_ORCHID_2023",
+          "access": "entry_only_current_video_unread"
+        },
+        {
+          "url": "https://www.peopleapp.com/livetopic/21783-10000002302",
+          "type": "media_live_topic",
+          "access": "entry_only"
+        }
+      ],
+      "materials": []
+    },
+    {
+      "id": "apicdt",
+      "name": "亚太大专华语辩论公开赛",
+      "aliases": [
+        "亚太赛",
+        "APICDT"
+      ],
+      "entries": [
+        {
+          "url": "https://sites.google.com/view/apicdt/主页",
+          "type": "NTU_Chinese_Society_event_site",
+          "access": "event_site_read"
+        },
+        {
+          "url": "https://www.youtube.com/channel/UCbcpKtCxhYXWGptwk-deteg",
+          "type": "event_site_video_channel",
+          "access": "entry_only_video_unread"
+        },
+        {
+          "url": "https://space.bilibili.com/442165426",
+          "type": "organizer_release_account_recorded_in_ORCHID_2023",
+          "access": "entry_only_current_video_unread"
+        }
+      ],
+      "materials": []
+    }
+  ],
+  "provenance": [
+    {
+      "url": "https://aclanthology.org/2023.emnlp-main.582.pdf",
+      "location": "Appendix E Table 10",
+      "supports": "2023年论文所记录的赛事主办方发布入口，不代表当前账号认证已重新核验"
+    }
+  ],
+  "legacy_reference": "tournament-legacy-links.md"
+}

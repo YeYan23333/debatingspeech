@@ -2,8 +2,6 @@
 
 主技能名为 `debatingspeech`。写稿、API 接入与 DOCX 交付已合并到唯一的 `SKILL.md`，不再安装多个子技能。详细教程与研究记录放在 references 中，按需读取，不必全部粘贴进输入框。
 
-**当前版本：v2.4** ｜ [更新记录](CHANGELOG.md) ｜ [GitHub 仓库](https://github.com/YeYan23333/debatingspeech)
-
 ## 安装与使用
 
 仓库根目录就是技能目录，克隆后文件夹名正好与 `SKILL.md` 的 name 一致：

@@ -20,7 +20,7 @@ git clone https://github.com/YeYan23333/debatingspeech.git ~/.dsh/skills/debatin
 
 ## 使用
 
-把三件事说清楚就行：
+填写以下三项内容以开始生成：
 
 1. 完整辩题，例如「童话是/不是梦」
 2. 立场，正方或反方

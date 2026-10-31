@@ -1,6 +1,6 @@
 # Debatingspeech 华语辩论工作流 V3.0
 
-华语辩论写作技能。给一个辩题、立场和时长，它先给出框架，再按你要的辩位往下写，最后交一份 Word 到桌面的 `products` 文件夹。
+华语辩论写作技能。给一个辩题、立场和时长，它先把整场怎么打想清楚，再按你要的辩位往下写，最后交一份 Word 到桌面的 `products` 文件夹。
 
 和上一版最大的区别：以前是一辩稿单点生成，现在先有框架，再拆辩位。
 
@@ -39,6 +39,7 @@ git clone https://github.com/YeYan23333/debatingspeech.git "$env:USERPROFILE\.ds
 
 ```text
 桌面/products/
+├── 童话是不是梦-反方-论证框架.docx
 ├── 童话是不是梦-反方-一辩稿.docx
 ├── 童话是不是梦-反方-二辩申论.docx
 ├── 童话是不是梦-反方-三辩质询问题.docx
@@ -47,6 +48,7 @@ git clone https://github.com/YeYan23333/debatingspeech.git "$env:USERPROFILE\.ds
 └── 童话是不是梦-反方-攻防稿.docx
 ```
 
+这只是命名示例，不代表一次全给你。
 
 ## 想自己跑脚本（可选）
 

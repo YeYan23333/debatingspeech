@@ -7,6 +7,7 @@ from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import patch, Mock
 from docx import Document
+from tests.content_fixtures import MODEL_RESPONSE, write_sources
 import importlib.util
 import io
 import json
@@ -41,14 +42,15 @@ class WorkflowTests(unittest.TestCase):
         self.products = self.root / 'products'
         self.framefile = self.root / '框架.txt'
         self.framefile.write_text('判准：保护事实的解释力。\n论点一：A。\n论点二：B。\n边界：不改辩题。', encoding='utf8')
+        self.source_file = write_sources(self.root / 'content-sources.json')
 
     def execute(self, stage, *, extra=None, mocked=True):
         args = ['debate_workflow.py', '--stage', stage, '--topic', '认知/发展?', '--side', '正方',
-                '--products-dir', str(self.products)] + (extra or [])
+                '--products-dir', str(self.products), '--content-sources-file', str(self.source_file)] + (extra or [])
         out = io.StringIO(); err = io.StringIO()
         router = Mock()
         router.generate.return_value = SimpleNamespace(
-            text='# 稿件\n\n一段清楚的立论。\n\n## 参考文献\n\n没有经核验的事实条目。',
+            text=MODEL_RESPONSE,
             provider='mock', model='test', response_id='offline')
         with patch.object(sys, 'argv', args), redirect_stdout(out), redirect_stderr(err):
             if mocked:

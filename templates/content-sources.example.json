@@ -1,0 +1,22 @@
+{
+  "sources": [
+    {
+      "id": "1",
+      "title": "填写具体现象的原始来源标题",
+      "locator": "填写实际原文URL，或本地文件路径与页码/段落",
+      "kind": "phenomenon",
+      "verified": false,
+      "verification_note": "实际阅读原始来源后，记录核对过的对象、时间、范围与结果；核验完成后再改为true",
+      "summary": "填写已核验的具体事件、行为、制度实践或统计趋势，以及该来源不能支持的推断"
+    },
+    {
+      "id": "2",
+      "title": "填写学理原始文献标题",
+      "locator": "填写实际文献URL/DOI，或本地文献路径与页码/段落",
+      "kind": "theory",
+      "verified": false,
+      "verification_note": "实际查阅文献后，记录核对过的理论命题、研究条件与适用范围；核验完成后再改为true",
+      "summary": "填写已核验学理的命题、机制、适用条件和可支持的结论，不只填写理论名"
+    }
+  ]
+}

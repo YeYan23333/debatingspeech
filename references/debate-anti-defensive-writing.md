@@ -1,6 +1,8 @@
 # 辩论写作的反防御性规范（由学术写作原则转译）
 
-参考：[Adkid-Zephyr / anti-defensive-writing](https://github.com/Adkid-Zephyr/anti-defensive-writing-Skill/blob/main/skills/anti-defensive-writing/SKILL.md)。其目标原是学术写作；这里独立重构为华语辩论的表达规范，不复制原 Skill 全文。
+上游：[Adkid-Zephyr / anti-defensive-writing-Skill](https://github.com/Adkid-Zephyr/anti-defensive-writing-Skill/tree/main)。完整 skill 随包保存于 [skills/anti-defensive-writing/SKILL.md](../skills/anti-defensive-writing/SKILL.md)，上游来源与许可记录保留在同目录。其原始语境主要是学术写作；本文件是辩论场景适配层，不能把学术论文的章节结构机械套进口播。
+
+先应用原技能中主张集中、证据各有任务、呈现成功逻辑、避免无关自我设限的原则，再按本文件处理辩位、举证责任与事实边界。遇到上游鼓励弱化限制披露的写法时，保留本题必需的适用条件和会改变结论的重要反证；真实性、原题范围及用户明确的“每篇至少一个现象、一条学理”要求优先。内审可列缺口，正文只保留已经成立的论证，缺项不能以强硬措辞代替。
 
 ## 规则
 

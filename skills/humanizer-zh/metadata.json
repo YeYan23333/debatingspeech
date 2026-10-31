@@ -1,0 +1,25 @@
+{
+  "license": "MIT",
+  "upstream_commit": null,
+  "local_file_hashes": {
+    "LICENSE": "8f846424de8cd436ab865890f4831ef15a9889f31e336d106817cbcffef2d496",
+    "SKILL.md": "7cfea51356665f7db36ad759ecbd0c1660cd2ce7857f1a8e5ad8198e0c18b6b5",
+    "upstream-README.md": "506b28df0e566791a38ab15312aa1e23e00a2a3f25c6d2e6f6c12f97b2bbf501",
+    "SOURCE.md": "a8575ceff92488071aa99fc8d17ecc2cb98ca6f8da5b66213ea36978daa524b2"
+  },
+  "skill_revision": "2026-09-23",
+  "required_relative_resources": [],
+  "copyright": "Copyright (c) 2026 歸藏",
+  "local_hashes_are_upstream_blob_hashes": false,
+  "retrieved_date": "2026-10-31",
+  "retrieval_method": "web raw visible text, complete numbered lines checked",
+  "branch": "main",
+  "readme_lines": 132,
+  "upstream_head_verified": false,
+  "skill_lines": 390,
+  "license_lines": 19,
+  "user_url": "https://github.com/op7418/Humanizer-zh?tab=readme-ov-file",
+  "repository": "https://github.com/op7418/Humanizer-zh",
+  "timezone": "Asia/Shanghai",
+  "upstream_code_executed": false
+}

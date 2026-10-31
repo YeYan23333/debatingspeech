@@ -1,0 +1,16 @@
+{
+  "copyright": "Copyright (c) 2026 Adkid-Zephyr",
+  "branch": "main",
+  "upstream_head_verified": false,
+  "upstream_commit": null,
+  "timezone": "Asia/Shanghai",
+  "retrieval_method": "web tool visible text transcription, raw and GitHub file page cross-check",
+  "local_file_hashes": {
+    "SKILL.md": "dfbff656b625120aa162819df662bbc1309f3eb23ea3b11790fc02a91940d66b",
+    "LICENSE": "3a2df6dceb789a1353eee377fbe9ed2361513ff9db3bce07378193fbc76dec63"
+  },
+  "repository": "https://github.com/Adkid-Zephyr/anti-defensive-writing-Skill",
+  "retrieved_date": "2026-10-31",
+  "license": "MIT",
+  "local_hashes_are_upstream_blob_hashes": false
+}

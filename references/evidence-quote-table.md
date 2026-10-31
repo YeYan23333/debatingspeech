@@ -1,6 +1,8 @@
 # 攻防稿原文资料表：输入与核验规范
 
-使用 `skills/一辩稿DOCX输出/scripts/debate_workflow.py --stage attack-defense --evidence-file evidence.json`。
+使用 `skills/一辩稿DOCX输出/scripts/debate_workflow.py --stage attack-defense --topic "完整辩题" --side 正方 --framework-file "已确认框架.docx" --content-sources-file "已核验来源.json" --evidence-file evidence.json`。
+
+正文的“现象＋学理”来源登记与表格短引是两种输入，见 [最低内容要求](minimum-content.md)。正文引用某条 E1 时，该 ID 也须在 `content-sources-file` 中登记并完成核验；只供备用表使用的条目可保持独立编号，不要求都写入正文。
 
 ## 提供什么
 

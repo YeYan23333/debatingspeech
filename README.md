@@ -2,7 +2,7 @@
 
 追加 [Humanizer-zh](skills/humanizer-zh/SKILL.md) 作为成稿后的中文表达润色环节，减少套话、模板结构和重复总结；保留来源与许可。润色边界见 [辩论适配](references/humanizer-debate.md)，现象与学理的最低要求继续生效。
 
-本地更新（2026-10-31）：已纳入两批附件的 34 份有效材料，保留原件、提取文本、正文主题与方法标签；目录见 [语料库](references/corpus/catalog.md)。新加入用户指定仓库的 [anti-defensive-writing](skills/anti-defensive-writing/SKILL.md)，与 [辩论适配规则](references/debate-anti-defensive-writing.md) 配合使用。此为本地更新，未创建远程 Release。
+本地更新（2026-10-31）：已纳入两批附件的 34 份有效材料，保留原件、提取文本、正文主题与方法标签；目录见 [语料库](references/corpus/catalog.md)。新加入用户指定仓库的 [anti-defensive-writing](skills/anti-defensive-writing/SKILL.md)，与 [辩论适配规则](references/debate-anti-defensive-writing.md) 配合使用。
 
 **每篇稿子的正文必须至少包含一个具体可核验现象和一条有出处的学理，并解释其支持关系。** 现象可用真实案例、制度实践、可观察行为或有来源的趋势。只有名词、假设场景或文献清单不算完成；资料不足不导出合格成稿。详见 [最低内容要求](references/minimum-content.md)。新旧模型生成入口均须通过结构化内容检查；检查验证正文与提交的来源记录是否对应，不替代人工事实核验。单纯格式转换工具仍可转换已有文本，不代表完成内容审校。
 

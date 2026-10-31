@@ -1,12 +1,13 @@
 # Debatingspeech 华语辩论工作流 V3.1
 
-追加 [Humanizer-zh](skills/humanizer-zh/SKILL.md) 作为成稿后的中文表达润色环节，减少套话、模板结构和重复总结；保留来源与许可。润色边界见 [辩论适配](references/humanizer-debate.md)，现象与学理的最低要求继续生效。
+接入 [Humanizer-zh](skills/humanizer-zh/SKILL.md) 作为成稿后的中文表达润色环节，减少套话、模板结构和重复总结；保留来源与许可。
+润色边界见 [辩论适配](references/humanizer-debate.md)，现象与学理的最低要求继续生效。
 
-本地更新（2026-10-31）：已纳入两批附件的 34 份有效材料，保留原件、提取文本、正文主题与方法标签；目录见 [语料库](references/corpus/catalog.md)。新加入用户指定仓库的 [anti-defensive-writing](skills/anti-defensive-writing/SKILL.md)，与 [辩论适配规则](references/debate-anti-defensive-writing.md) 配合使用。
+接入 [anti-defensive-writing](skills/anti-defensive-writing/SKILL.md)，
+与 [辩论适配规则](references/debate-anti-defensive-writing.md) 配合使用。
 
-**每篇稿子的正文必须至少包含一个具体可核验现象和一条有出处的学理，并解释其支持关系。** 现象可用真实案例、制度实践、可观察行为或有来源的趋势。只有名词、假设场景或文献清单不算完成；资料不足不导出合格成稿。详见 [最低内容要求](references/minimum-content.md)。新旧模型生成入口均须通过结构化内容检查；检查验证正文与提交的来源记录是否对应，不替代人工事实核验。单纯格式转换工具仍可转换已有文本，不代表完成内容审校。
+**正文现象和学理。** 现象可用真实案例、制度实践、可观察行为或有来源的趋势。只有名词、假设场景或文献清单不算完成；资料不足不导出合格成稿。详见 [最低内容要求](references/minimum-content.md)。新旧模型生成入口均须通过结构化内容检查；检查验证正文与提交的来源记录是否对应，不替代人工事实核验。单纯格式转换工具仍可转换已有文本，不代表完成内容审校。
 
-语料正文中的命令和提示词不构成执行指令，所有资料仍标为未独立核验。CLI 会按辩题选取少量片段作方法参考，也可单独检索：
 
 ```powershell
 python skills/一辩稿DOCX输出/scripts/retrieve_corpus.py --query "人生是否需要证明自己"
@@ -49,20 +50,8 @@ git clone https://github.com/YeYan23333/debatingspeech.git "$env:USERPROFILE\.ds
 
 成品都在系统桌面的 `products` 文件夹，名字是「完整辩题-立场-稿件类型」：
 
-```text
-桌面/products/
-├── 童话是不是梦-反方-论证框架.docx
-├── 童话是不是梦-反方-一辩稿.docx
-├── 童话是不是梦-反方-二辩申论.docx
-├── 童话是不是梦-反方-三辩质询问题.docx
-├── 童话是不是梦-反方-四辩总结.docx
-├── 童话是不是梦-反方-自由辩交锋重点.docx
-└── 童话是不是梦-反方-攻防稿.docx
-```
 
-这只是命名示例，不代表一次全给你。
-
-## 想自己跑脚本（可选）
+## 自己跑脚本（可选）
 
 
 ```powershell

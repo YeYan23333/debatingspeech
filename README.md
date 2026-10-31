@@ -15,7 +15,6 @@ python skills/一辩稿DOCX输出/scripts/retrieve_corpus.py --query "人生是�
 
 华语辩论写作技能。给一个辩题、立场和时长，它先把整场怎么打想清楚，再按你要的辩位往下写，最后交一份 Word 到桌面的 `products` 文件夹。
 
-和上一版最大的区别：以前是一辩稿单点生成，现在先有框架，再拆辩位。
 
 ## 安装
 

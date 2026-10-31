@@ -3,7 +3,7 @@ name: debatingskills
 description: 先建立完整的华语辩论论证框架，再在同一框架下按用户要求生成一辩立论、二辩申论、三辩质询、四辩总结、自由辩重点或含可核验原文表的攻防稿，默认 Word DOCX 交付；兼容多模型 API。
 ---
 
-# debatingskills V3.0：框架先行的华语辩论全辩位 Skill（语料与规则更新）
+# debatingskills V3.1：框架先行的华语辩论全辩位 Skill（语料与规则更新）
 
 ## 本地语料与成稿硬要求
 

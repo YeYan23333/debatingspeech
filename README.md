@@ -1,4 +1,4 @@
-# Debatingspeech 华语辩论工作流 V3.0
+# Debatingspeech 华语辩论工作流 V3.1
 
 追加 [Humanizer-zh](skills/humanizer-zh/SKILL.md) 作为成稿后的中文表达润色环节，减少套话、模板结构和重复总结；保留来源与许可。润色边界见 [辩论适配](references/humanizer-debate.md)，现象与学理的最低要求继续生效。
 

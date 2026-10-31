@@ -1,3 +1,5 @@
+> **V3.0 版提醒：**本文件说明旧版独立一辩转换接口。新版框架先行、各辩位及攻防资料表的默认调用入口为 `skills/一辩稿DOCX输出/scripts/debate_workflow.py`；详见根目录 `SKILL.md` 与 `README.md`。
+
 # DOCX 输出说明
 
 写稿、模型接入与DOCX交付已合并到根目录 [SKILL.md](../SKILL.md)，本文件是按需读取的脚本说明，不是独立技能。

@@ -11,6 +11,7 @@ import unittest
 from unittest.mock import Mock, patch
 
 from docx import Document
+from tests.content_fixtures import MODEL_RESPONSE, write_sources
 
 try:
     from . import test_docx_output as fixtures
@@ -32,6 +33,7 @@ class DesktopOutputTests(unittest.TestCase):
         self.products = self.desktop / "products"
         self.input_file = self.root / "draft.md"
         self.input_file.write_text(fixtures.DRAFT, encoding="utf-8")
+        self.source_file = write_sources(self.root / 'content-sources.json')
         desktop_patch = patch.object(exporter, "desktop_directory", return_value=self.desktop)
         self.desktop_mock = desktop_patch.start()
         self.addCleanup(desktop_patch.stop)
@@ -65,14 +67,14 @@ class DesktopOutputTests(unittest.TestCase):
     def run_generator(self, *extra, model_failure=None):
         argv = [
             "generate_docx_with_model.py", "--topic", fixtures.TOPIC, "--side", "反方",
-            "--duration", "3分钟", *extra,
+            "--duration", "3分钟", "--content-sources-file", str(self.source_file), *extra,
         ]
         router = Mock()
         if model_failure is not None:
             router.generate.side_effect = model_failure
         else:
             router.generate.return_value = SimpleNamespace(
-                text=fixtures.DRAFT, provider="offline_test", model="offline-model", response_id="test-response"
+                text=MODEL_RESPONSE, provider="offline_test", model="offline-model", response_id="test-response"
             )
         dotenv = SimpleNamespace(load_dotenv=Mock())
         stdout, stderr = io.StringIO(), io.StringIO()

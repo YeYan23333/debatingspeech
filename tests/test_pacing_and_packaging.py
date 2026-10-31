@@ -68,13 +68,13 @@ class WordBudgetTests(unittest.TestCase):
 
 
 class SingleSkillPackageTests(unittest.TestCase):
-    def test_root_is_the_only_skill_entry_point(self):
+    def test_debate_root_and_requested_anti_defensive_skill_are_discoverable(self):
         entries = sorted(
             path.relative_to(PROJECT_ROOT).as_posix()
             for path in PROJECT_ROOT.rglob("SKILL.md")
             if "__pycache__" not in path.parts
         )
-        self.assertEqual(entries, ["SKILL.md"])
+        self.assertEqual(entries, ["SKILL.md", "skills/anti-defensive-writing/SKILL.md", "skills/humanizer-zh/SKILL.md"])
         skill = (PROJECT_ROOT / "SKILL.md").read_text(encoding="utf-8")
         front_matter = re.match(r"\A---\s*\n(.*?)\n---(?:\s*\n|\Z)", skill, re.S)
         self.assertIsNotNone(front_matter, "Root Skill must retain YAML front matter")

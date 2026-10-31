@@ -13,6 +13,7 @@ import unittest
 from unittest.mock import Mock, patch
 
 from docx import Document
+from tests.content_fixtures import MODEL_RESPONSE, write_sources
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -108,6 +109,7 @@ class DocxCliTests(unittest.TestCase):
         self.products = self.root / "products"
         self.input_file = self.root / "draft.md"
         self.input_file.write_text(DRAFT, encoding="utf-8")
+        self.source_file = write_sources(self.root / 'content-sources.json')
 
     def output_path(self, side="正方"):
         return self.products / f"{TOPIC}-{side}-一辩稿.docx"
@@ -138,11 +140,12 @@ class DocxCliTests(unittest.TestCase):
         args = [
             "generate_docx_with_model.py", "--topic", TOPIC, "--side", "反方",
             "--duration", "3分钟", "--products-dir", str(self.products),
+            "--content-sources-file", str(self.source_file),
             *extra,
         ]
         router = Mock()
         router.generate.return_value = SimpleNamespace(
-            text=DRAFT, provider="offline_test", model="offline-model", response_id="test-response"
+            text=MODEL_RESPONSE, provider="offline_test", model="offline-model", response_id="test-response"
         )
         dotenv = SimpleNamespace(load_dotenv=Mock())
         stdout, stderr = io.StringIO(), io.StringIO()

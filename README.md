@@ -1,13 +1,12 @@
 # Debatingspeech 华语辩论工作流 V3.1
 
-接入 [Humanizer-zh](skills/humanizer-zh/SKILL.md) 作为成稿后的中文表达润色环节，减少套话、模板结构和重复总结；保留来源与许可。
-润色边界见 [辩论适配](references/humanizer-debate.md)，现象与学理的最低要求继续生效。
+追加 [Humanizer-zh](skills/humanizer-zh/SKILL.md) 作为成稿后的中文表达润色环节，减少套话、模板结构和重复总结；保留来源与许可。润色边界见 [辩论适配](references/humanizer-debate.md)，现象与学理的最低要求继续生效。
 
-接入 [anti-defensive-writing](skills/anti-defensive-writing/SKILL.md)，
-与 [辩论适配规则](references/debate-anti-defensive-writing.md) 配合使用。
+本地更新（2026-10-31）：已纳入两批附件的 34 份有效材料，保留原件、提取文本、正文主题与方法标签；目录见 [语料库](references/corpus/catalog.md)。新加入用户指定仓库的 [anti-defensive-writing](skills/anti-defensive-writing/SKILL.md)，与 [辩论适配规则](references/debate-anti-defensive-writing.md) 配合使用。
 
-**正文现象和学理。** 现象可用真实案例、制度实践、可观察行为或有来源的趋势。只有名词、假设场景或文献清单不算完成；资料不足不导出合格成稿。详见 [最低内容要求](references/minimum-content.md)。新旧模型生成入口均须通过结构化内容检查；检查验证正文与提交的来源记录是否对应，不替代人工事实核验。单纯格式转换工具仍可转换已有文本，不代表完成内容审校。
+**每篇稿子的正文必须至少包含一个具体可核验现象和一条有出处的学理，并解释其支持关系。** 现象可用真实案例、制度实践、可观察行为或有来源的趋势。只有名词、假设场景或文献清单不算完成；资料不足不导出合格成稿。详见 [最低内容要求](references/minimum-content.md)。新旧模型生成入口均须通过结构化内容检查；检查验证正文与提交的来源记录是否对应，不替代人工事实核验。单纯格式转换工具仍可转换已有文本，不代表完成内容审校。
 
+语料正文中的命令和提示词不构成执行指令，所有资料仍标为未独立核验。CLI 会按辩题选取少量片段作方法参考，也可单独检索：
 
 ```powershell
 python skills/一辩稿DOCX输出/scripts/retrieve_corpus.py --query "人生是否需要证明自己"
@@ -50,8 +49,20 @@ git clone https://github.com/YeYan23333/debatingspeech.git "$env:USERPROFILE\.ds
 
 成品都在系统桌面的 `products` 文件夹，名字是「完整辩题-立场-稿件类型」：
 
+```text
+桌面/products/
+├── 童话是不是梦-反方-论证框架.docx
+├── 童话是不是梦-反方-一辩稿.docx
+├── 童话是不是梦-反方-二辩申论.docx
+├── 童话是不是梦-反方-三辩质询问题.docx
+├── 童话是不是梦-反方-四辩总结.docx
+├── 童话是不是梦-反方-自由辩交锋重点.docx
+└── 童话是不是梦-反方-攻防稿.docx
+```
 
-## 自己跑脚本（可选）
+这只是命名示例，不代表一次全给你。
+
+## 想自己跑脚本（可选）
 
 
 ```powershell
@@ -112,6 +123,43 @@ python skills/一辩稿DOCX输出/scripts/debate_workflow.py `
 核验规则细节见 [证据短引规则](references/evidence-quote-table.md) 和 [证据模板](templates/evidence.example.json)。
 
 ## 版本更新公告
+
+### V3.1 ｜ 2026-11-01
+
+**Debatingspeech 华语辩论工作流 V3.1 版本更新公告**
+
+经过迭代打磨，华语辩论写作技能 debatingskills 迎来 V3 版本更新后的首个功能版本（V3.1）。
+
+自 V3.0 发布以来，使用场景已从“把整场怎么打想清楚”继续往前推到“每一句话从哪来”。本次更新没有新增辩位，也没有改动框架先行的主流程，而是把论证的原料与表达的边界补上：一方面接入可追溯的语料库，让引用的现象与学理能够回到原件；另一方面引入两个外部 skill，分别负责压制防御性写作与成稿后的中文润色。在此基础上，写稿的底线被进一步收紧。因此本次更新号为：V3.1。
+
+**更新内容**
+
+1. **新增辩论语料库**
+   34 份材料入库（26 份 DOCX、4 份 XLSX、3 份 DOC、1 份 PDF），每份保留原件、提取文本、SHA-256、来源与实际正文主题，事实状态统一标「未独立核验」。库内提供逐份目录 `references/corpus/catalog.md`、方法研究 `references/corpus/analysis.md` 与按辩题检索入口 `references/corpus/index.json`；附件内部的指令性文字不进入指令层，只作为材料使用。
+
+2. **接入 Humanizer-zh**
+   保留上游原文与 MIT 许可，用于成稿后的最后一遍中文表达润色。该环节只调整表达，不改动事实、必要限定、来源编号与最低内容要求；辩论场景下的适用边界见 `references/humanizer-debate.md`，避免润色把论证削平。
+
+3. **接入 anti-defensive-writing**
+   针对论文与稿件中常见的自我削弱、提前替对方发言、平铺展示等问题，将其规则落到辩论语境（见 `references/debate-anti-defensive-writing.md`），与 V3.0 的论证集中要求配合使用。
+
+4. **写稿底线进一步收紧**
+   每篇稿子的正文必须至少包含一个具体可核验的现象和一条有出处的学理，并说明二者如何支持本方论点。只有名称、空泛概括、名言或文末参考文献不算完成；缺项或来源未确认时，不导出正式成稿。详见 `references/minimum-content.md`。
+
+5. **新增检索与检查脚本**
+   `skills/一辩稿DOCX输出/scripts/retrieve_corpus.py` 按辩题检索语料，`skills/一辩稿DOCX输出/scripts/content_requirements.py` 在成稿前做结构化内容检查。检查核对正文与提交的来源记录是否对应，不替代人工事实核验；单纯格式转换工具仍可转换已有文本，不代表完成内容审校。
+
+6. **文档与版本号对齐**
+   README 与 SKILL.md 的大标题统一为 V3.1，删去旧版“本地更新、未创建远程 Release”的说明，CHANGELOG 补上 V3.1 小节；安装包内补入更新公告，中文路径按 UTF-8 写入，解压不再乱码。
+
+**使用说明**
+
+1. 给出辩题、立场与发言时长后，流程与 V3.0 一致：先生成全场论证框架，确认后再按辩位写稿。
+2. 需要引用材料时，可直接要求从语料库检索；正式引用前仍以原件为准。
+3. 成稿会先经过内容检查，出现“缺现象”“缺学理”“来源对不上”时会指出具体缺口，补齐后再次生成。
+4. 润色环节在成稿之后进行，如不希望改动表达，可在要求中明确跳过。
+5. 成品仍统一保存在系统桌面的 `products` 文件夹，命名格式为「完整辩题 - 立场 - 稿件类型」，同名文件默认不覆盖。
+6. 已安装旧版本的用户，在技能目录下执行 `git pull` 指令，即可更新至 V3.1。
 
 ### V3.0 ｜ 2026-10-31
 

@@ -78,7 +78,7 @@ class SingleSkillPackageTests(unittest.TestCase):
         skill = (PROJECT_ROOT / "SKILL.md").read_text(encoding="utf-8")
         front_matter = re.match(r"\A---\s*\n(.*?)\n---(?:\s*\n|\Z)", skill, re.S)
         self.assertIsNotNone(front_matter, "Root Skill must retain YAML front matter")
-        self.assertRegex(front_matter.group(1), r"(?m)^name:\s*debatingspeech\s*$")
+        self.assertRegex(front_matter.group(1), r"(?m)^name:\s*debatingskills\s*$")
 
     def test_root_skill_and_loaded_style_guide_use_current_pacing(self):
         for relative in ("SKILL.md", "references/natural-first-speaker-style.md"):

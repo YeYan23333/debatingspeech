@@ -1,26 +1,23 @@
-# debatingspeech 一辩稿生成器
+# Debatingspeech 华语辩论工作流 V3.0
 
-华语辩论一辩稿写作skills：给出辩题、立场和时长，生成几乎完整的中文一辩稿，并把文件存到桌面。
+华语辩论写作技能。给一个辩题、立场和时长，它先把整场怎么打想清楚，再按你要的辩位往下写，最后交一份 Word 到桌面的 `products` 文件夹。
+
+和上一版最大的区别：以前是一辩稿单点生成，现在先有框架，再拆辩位。
 
 ## 安装
 
-仓库根目录就是技能目录，克隆后文件夹名正好与 `SKILL.md` 的 name 一致：
+用 git 克隆到技能目录：
 
 ```powershell
-git clone https://github.com/YeYan23333/debatingspeech.git "$env:USERPROFILE\.dsh\skills\debatingspeech"
+git clone https://github.com/YeYan23333/debatingspeech.git "$env:USERPROFILE\.dsh\skills\debatingskills"
 ```
 
-macOS / Linux：
+以后要更新，进技能目录 `git pull` 就行。
 
-```bash
-git clone https://github.com/YeYan23333/debatingspeech.git ~/.dsh/skills/debatingspeech
-```
 
-也可以下载压缩包，解压后把整个目录放到技能目录并命名为 `debatingspeech`。请保留全部脚本和 `references`，不要只复制 `SKILL.md`。换用其他 Agent 软件时，放进它自己的技能目录即可，例如 `~/.codex/skills/debatingspeech`。
+## 怎么用
 
-## 使用
-
-填写以下三项内容以开始生成：
+对话里把这三件事说清楚就能开工：
 
 1. 完整辩题，例如「童话是/不是梦」
 2. 立场，正方或反方
@@ -28,25 +25,132 @@ git clone https://github.com/YeYan23333/debatingspeech.git ~/.dsh/skills/debatin
 
 例如：
 
-> 童话是/不是梦，反方，3分钟
+> 童话是/不是梦，反方，3 分钟
 
-随后会拿到完整的一辩稿正文、正文篇幅与预计口播时间、文末编号引注对应的来源，以及一份 Word 文件。
+但它不会立刻开始写稿。第一步是一份**全场论证框架**：核心概念怎么定、判断标准是什么、要打哪两三条、每条靠什么撑、每个辩位分别负责哪一块。你看了、改了、点头了，才进下一段。
 
-成品保存在系统桌面的 `products` 文件夹，文件名就是完整辩题加立场，例如 `童话是不是梦-反方-一辩稿.docx`。同名稿默认不覆盖。
+已经有自己的框架？直接把 `.md`、`.txt`、`.json` 或 `.docx` 丢进来。它会先检查框架内部是否自洽，有不一致的地方会说出来，但不会擅自把你的框架换成它的。
 
-想改稿直接说改哪里，不用重复辩题和立场。
+框架定了，默认**只写一辩稿**。一辩稿交付之后会问一句还要不要二辩申论、三辩质询问题、四辩总结、自由辩交锋重点和攻防稿；你不说，它不会自动往下写一整套。
 
-## 可选：接入模型 API
+好处是所有稿子共用同一套判断标准和核心论点，不会一辩说 A、四辩说 B。
 
-DSH和豆包这类专用大模型只能调用自家的模型
-如果想让自带脚本直接调用模型生成初稿：
+成品都在系统桌面的 `products` 文件夹，名字是「完整辩题-立场-稿件类型」：
 
-```powershell
-pip install -r requirements.txt
+```text
+桌面/products/
+├── 童话是不是梦-反方-论证框架.docx
+├── 童话是不是梦-反方-一辩稿.docx
+├── 童话是不是梦-反方-二辩申论.docx
+├── 童话是不是梦-反方-三辩质询问题.docx
+├── 童话是不是梦-反方-四辩总结.docx
+├── 童话是不是梦-反方-自由辩交锋重点.docx
+└── 童话是不是梦-反方-攻防稿.docx
 ```
 
-再按 [API 调用教程](references/api调用教程.md) 配置 `model_api/config.yaml` 与本机 `.env`。
+这只是命名示例，不代表一次全给你。
+
+## 想自己跑脚本（可选）
+
+
+```powershell
+cd "C:\你的路径\debatingskills"
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+Copy-Item model_api/config.example.yaml model_api/config.yaml
+Copy-Item model_api/.env.example model_api/.env
+```
+
+macOS / Linux 把激活命令换成 `source .venv/bin/activate`，复制命令换成 `cp`。
+
+然后在 `config.yaml` 里填模型和接口地址，在本机 `.env` 里填已有的 API Key。真实API不要写进代码，不要上传到聊天。仓库里只放示例文件，说明见 [API 调用教程](references/api调用教程.md)。
+
+### 三个常用命令
+
+```powershell
+# 第一步：出框架，先别写稿
+python skills/一辩稿DOCX输出/scripts/debate_workflow.py `
+  --stage framework --topic "示例辩题" --side 正方
+
+# 框架确认后：写一辩稿
+python skills/一辩稿DOCX输出/scripts/debate_workflow.py `
+  --stage first --topic "示例辩题" --side 正方 --duration "3分钟" `
+  --framework-file "示例辩题-正方-论证框架.docx"
+
+# 要攻防稿的时候再加资料表
+python skills/一辩稿DOCX输出/scripts/debate_workflow.py `
+  --stage attack-defense --topic "示例辩题" --side 正方 `
+  --framework-file "示例辩题-正方-论证框架.docx" --evidence-file "evidence.json"
+```
+
+已有框架时，第一步直接加 `--framework-file "我的框架.docx"`，脚本不调模型，把框架转成统一格式的 Word，后面照常往下走。
+
+
+### 各辩位对应什么
+
+| `--stage` | 写出什么 | 文件名后缀 |
+|---|---|---|
+| `framework` | 全场论证框架 | `-论证框架.docx` |
+| `first` | 一辩立论 | `-一辩稿.docx` |
+| `second` | 二辩申论 | `-二辩申论.docx` |
+| `third` | 三辩质询问题 | `-三辩质询问题.docx` |
+| `fourth` | 四辩总结 | `-四辩总结.docx` |
+| `free` | 自由辩交锋重点 | `-自由辩交锋重点.docx` |
+| `attack-defense` | 攻防稿（含资料原文表） | `-攻防稿.docx` |
+
+想存到别处用 `--products-dir`，要覆盖同名文件用 `--force`。旧的 `generate_docx_with_model.py` 还能跑，但没有框架门控，新任务建议统一用 `debate_workflow.py`。
+
+## 资料表能做什么，不能做什么
+
+- 普通模型 API 不会自己联网查资料。脚本写出来的引注，除非你真去读过原文，否则都只能算线索。
+- 攻防资料表的短引有上限：中文 45 字、英文 25 词，每份来源一条，附可点击链接、用途、适用条件和局限。
+- 核不实的材料标「待核验」，缺的类别留空，不编造作者、年份和页码。
+- 赛事稿只用来学论证的骨架，不当作数据来源，也不抄里面的独特句式和故事。
+
+核验规则细节见 [证据短引规则](references/evidence-quote-table.md) 和 [证据模板](templates/evidence.example.json)。
+
 ## 版本更新公告
+
+### V3.0 ｜ 2026-10-31
+
+**Debatingspeech 华语辩论工作流 V3.0 版本更新公告**
+
+很荣幸，经过各位使用者的反馈与迭代打磨，华语辩论写作技能 debatingskills 迎来第三个大版本的正式更新（V3.0）。
+
+自 v2.5 发布以来，使用场景已从单一的一辩稿撰写逐步扩展到整场备赛。本次更新在保留原有写稿、接口与交付能力的基础上，将生成流程重构并补齐多个辩位的成稿能力，进一步提升备赛流程的完整性与稿件之间的一致性，接下来它将迎来更加连续的思考流程。我们对此次更新非常兴奋，因此本次更新迎来了新的大版本号：V3.0。
+
+**更新内容**
+
+1. **新增统一辩论工作流**
+   引入统一入口 `debate_workflow.py`，调整生成流程为：先生成全场论证框架并交由使用者确认，确认后再按需生成对应辩位的稿件。各辩位共用同一套立场、判断标准与核心论点，避免不同稿件之间出现论证偏移。
+
+2. **支持框架生成与导入**
+   论证框架既可由技能自动生成，也可由使用者提供文件直接导入。导入时脚本会先检查框架内部是否自洽，指出不一致之处，不会擅自替换使用者原有的框架。
+
+3. **扩展辩位覆盖范围**
+   在一辩立论之外，新增二辩申论、三辩质询问题、四辩总结、自由辩交锋重点与攻防稿五类稿件，支持按辩位单独生成。各辩位遵循独立的写作职责。
+
+4. **攻防稿附资料原文表**
+   攻防稿文内附可用资料原文表，逐条列明资料用途、可能适用的交锋、原文短引、作者与标题及时间、可点击原文链接与适用局限。
+
+5. **论证进一步收紧**
+   围绕最强且切题的主张组织论证，不主动增加无关的举证负担，不写备赛流水账，不平铺展示，并减少机械套路化表达，保持自然叙述。
+
+6. **仅生成明确要求的内容**
+   默认只生成一辩稿。一辩稿交付后提示可扩展的稿件类型，未收到明确要求时不自动生成整套稿件。
+
+7. **延用原有交付方式**
+   保留多模型 API 接入、Word DOCX 直出桌面“products”文件夹、同名稿件防覆盖，以及旧版论据资料表与兼容脚本。
+
+**使用说明**
+
+1. 在对话中给出完整辩题、立场与发言时长三项信息，技能将先生成全场论证框架，确认后再进入写稿环节。
+2. 已有论证框架的，可直接提供 `.md`、`.txt`、`.json` 或 `.docx` 文件，无需重新生成。
+3. 一辩稿交付后，按提示回复需要生成的辩位；回复「不需要」即结束，不生成其余稿件。
+4. 成品统一保存在系统桌面的 `products` 文件夹内，文件命名格式为「完整辩题 - 立场 - 稿件类型」，同名文件默认不覆盖。
+5. 如需自行调用脚本，在项目根目录执行 `--stage framework` 生成框架，确认后执行 `--stage first` 生成一辩稿，其余辩位使用 `second`、`third`、`fourth`、`free`、`attack-defense`。
+6. 已安装旧版本的用户，在技能目录下执行 `git pull` 指令，即可更新至 V3.0。
 
 ### v2.5 ｜ 2026-10-22
 
@@ -59,20 +163,19 @@ pip install -r requirements.txt
 **用法**
 
 - 稿子保存后按提示回「需要」生成，回「不需要」跳过。
-- 表与一辩稿同在 `products` 文件夹，文件名为「辩题-立场-论据资料表」。
-- 已安装的版本执行 `git pull` 更新。
+- 文件名为「辩题-立场-论据资料表」，和成稿同在 `products` 文件夹。
 
 ### v2.4 ｜ 2026-10-21
 
-**更新内容**
+首个公开版本：写稿、API 接入和 Word 交付合并成一个技能；一辩稿直接存到桌面 `products`，同名稿不会悄悄覆盖。
 
-- 首个公开版本：写稿、API 接入和 Word 交付合并为一个技能，不再拆成几个。
-- 修复偶现的「红果短剧」风格行文：不再为了冲突而冲突、为了反转而反转，论证之间的衔接更顺。
-- 一辩稿直接存到桌面 `products`，文件名保留完整辩题，同名稿不会悄悄覆盖。
+更早的改动和完整记录见 [CHANGELOG.md](CHANGELOG.md)。
 
-**用法**
+## 项目结构
 
-安装后在对话里给出辩题、立场和时长就能开始；缺哪项会问哪项，已经给过的不重复问。
-
-需要模型直出时，按 [API 调用教程](references/api调用教程.md) 配置好再运行；不配置也能正常写稿。
-
+- `SKILL.md`：主技能规则和完整工作流，配置好技能目录后由智能体自动读取。
+- `skills/一辩稿DOCX输出/scripts/debate_workflow.py`：V3.0 的统一入口，框架、各辩位和攻防稿都从这里生成。
+- `model_api/`：多模型接口、配置示例和调用脚本。
+- `references/`：论证框架、辩位职责、证据引用、自然口播等规则。
+- `templates/`：框架模板和资料表示例。
+- `tests/`：回归测试。

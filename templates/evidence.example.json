@@ -1,0 +1,18 @@
+{
+  "evidence": [
+    {
+      "id": "E1",
+      "claim": "填写此材料在本辩题下真实支持的判断",
+      "quote": "填写已逐字核对的原文短引",
+      "url": "https://example.com/replace-with-real-source",
+      "title": "填写原始来源标题",
+      "author": "填写作者或机构",
+      "date": "填写发布日期或未标注日期",
+      "usage": "防守：具体用于回应哪个论证环节",
+      "encounter": "假设对方针对判断标准提出反驳",
+      "limitation": "填写样本范围、适用条件和不能证明的推论",
+      "verified": false,
+      "quote_confirmed": false
+    }
+  ]
+}

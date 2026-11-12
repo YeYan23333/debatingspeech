@@ -2,6 +2,7 @@
   "evidence": [
     {
       "id": "E1",
+      "group": "填写本题实际资料类型",
       "claim": "填写此材料在本辩题下真实支持的判断",
       "quote": "填写已逐字核对的原文短引",
       "url": "https://example.com/replace-with-real-source",
@@ -11,6 +12,7 @@
       "usage": "防守：具体用于回应哪个论证环节",
       "encounter": "假设对方针对判断标准提出反驳",
       "limitation": "填写样本范围、适用条件和不能证明的推论",
+      "verification_note": "填写实际查阅原文并逐字核对的范围",
       "verified": false,
       "quote_confirmed": false
     }

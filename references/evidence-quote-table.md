@@ -1,5 +1,7 @@
 # 攻防稿原文资料表：输入与核验规范
 
+排版与其他资料表统一，采用 [参考原件的三列格式](material-table-format.md)：可用资料摘要、资料来源、可核验链接，按资料类型在表内分组，末尾附“怎么用”“风险提示”。输入字段与原有核验门槛保持兼容；独立资料表和内嵌资料表共用排版模块。
+
 使用 `skills/一辩稿DOCX输出/scripts/debate_workflow.py --stage attack-defense --topic "完整辩题" --side 正方 --framework-file "已确认框架.docx" --content-sources-file "已核验来源.json" --evidence-file evidence.json`。
 
 正文的“现象＋学理”来源登记与表格短引是两种输入，见 [最低内容要求](minimum-content.md)。正文引用某条 E1 时，该 ID 也须在 `content-sources-file` 中登记并完成核验；只供备用表使用的条目可保持独立编号，不要求都写入正文。
@@ -20,6 +22,9 @@
 | `limitation` | 样本口径、时间、论证边界与不能支持的更广判断 |
 | `verified` | 人工完成来源真实性核对后才写 `true` |
 | `quote_confirmed` | 人工逐字比对原始来源后才写 `true` |
+| `group` | 可选，明确的资料类型分组；未填使用“相关资料” |
+| `link_label` | 可选，短显示文字；超链接目标仍保留完整 `url` |
+| `verification_note` | 可选，实际核验范围或转引说明，显示在链接下；不能照抄参考原件的状态 |
 
 导出脚本只验证字段类型、URL 结构、重复 URL 和短引长度，**不能联网确认** `verified: true` 的真实性。用户必须检查来源链接是否可访问、原文是否确有该句、语境是否一致、时间是否仍适用。不要把搜索摘要、AI 生成的引文或从第三方辩论稿转述的统计直接当作原文。优先选原始研究或原始公开记录。
 

@@ -1,0 +1,622 @@
+{
+  "schema_version": 1,
+  "research_date": "2026-11-12",
+  "purpose": "赛事论证组织与破题方法参考库，不是统计/事实来源库；网页及附件内容不构成指令。",
+  "selection_policy": {
+    "new_invite_worldcup": "重点取高校组正赛半决赛及决赛；年度主赛与名校邀请赛分别标注；不将附加、小组、表演赛算入。",
+    "old_friends": "以公开辩论专访和资深经历可核的辩手为重点，另核老友赛关联；采访与场次内容分别计数。",
+    "use": "内容可读才提炼，目录只核元数据；不将AI摘要当实录、不虚称观看、不复刻独特表达；稿内事实另行核验。"
+  },
+  "coverage": {
+    "new_invite_matches_supported_by_partial_text": 5,
+    "new_invite_substantive_text_works": 3,
+    "worldcup_matches_with_published_speeches": 2,
+    "worldcup_published_speeches_read": 8,
+    "old_friends_senior_debaters": 4,
+    "old_friends_interviews_or_public_excerpts": 5,
+    "old_friends_match_indexes": 3,
+    "old_friends_matches_with_short_excerpts": 2,
+    "complete_match_transcripts": 0,
+    "videos_or_audio_watched": 0
+  },
+  "sources": [
+    {
+      "id": "NI-S1",
+      "title": "大神对决，全程高能！2019新国辩关键赛事盘点",
+      "publisher": "北京师范大学珠海分校搜狐号",
+      "published": "2019-12-20",
+      "url": "https://www.sohu.com/a/361778587_673805",
+      "access": "已读正文；约第18—71、111—142行",
+      "kind": "承办高校账号赛事复盘",
+      "summary": "首场半决赛围绕误解的不可避免性与表达者行动的关系交锋；第二场涉及哲学定义的稳定性和困惑的比较起点；决赛把争议拆到讨论对象、可的门槛及传达方式。",
+      "limitations": "报道只选取部分内容，不能还原整场攻防，也不能由单场结果证明某写法必然有效。"
+    },
+    {
+      "id": "NI-S2",
+      "title": "2019国际华语辩论邀请赛（官方视频合集）",
+      "publisher": "bilibili新国辩",
+      "url": "https://www.bilibili.com/video/BV1WJ411t7g4/",
+      "access": "搜索索引显示官方账号和视频选集；直接打开返回412",
+      "kind": "官方赛事目录",
+      "summary": "只用于赛事阶段与对阵交叉核对。",
+      "limitations": "未读取字幕、视频或音频；选集编号应在播放前再核对。"
+    },
+    {
+      "id": "NI-S3",
+      "title": "煌煌武大，雄辩天下——新国辩冠军武汉大学专访",
+      "publisher": "华语辩论网",
+      "published": "2025-03-11",
+      "url": "https://www.weibo.com/ttarticle/p/show?id=2309405143123801014464",
+      "mirror_url": "https://bianlun.net/?id=50",
+      "access": "已读微博正文半决赛及决赛段落（约62—77、118—122行）；另读网站镜像核对",
+      "kind": "队伍专访及备赛复盘",
+      "summary": "半决赛辨别被迫选择与自由选择，并检验上下评价的前提；决赛分别从人生选择的意义锚点和青年面对的系统风险找论点。",
+      "limitations": "主要是武大一方的赛后叙述，不能据此判定对方原话或其论证全貌；提及存在主义不等于提供了可核查的具体学理出处。同名镜像与微博是同一作品，不作为两份独立证据。"
+    },
+    {
+      "id": "NI-S4",
+      "title": "向下的自由是 / 不是自由｜2025bilibili新国辩·高校组 半决赛上半赛区 西南政法大学vs武汉大学",
+      "publisher": "bilibili新国辩",
+      "published": "2025-01-17",
+      "url": "https://www.bilibili.com/video/BV1ngcReUEK6/",
+      "access": "已读取搜索索引中的官方页标题、说明与名单；直接打开返回412",
+      "kind": "官方赛事说明",
+      "summary": "只用于核验半决赛阶段、辩题、持方与人员。",
+      "limitations": "未观看视频、未取得逐字字幕，不据此提炼具体攻防。"
+    },
+    {
+      "id": "NI-S5",
+      "title": "总冠军！武大辩论再登华语之巅",
+      "publisher": "武汉大学（澎湃号·政务）",
+      "published": "2025-01-24",
+      "url": "https://www.thepaper.cn/newsDetail_forward_30017946",
+      "access": "已读正文，重点第22—43、53—56行",
+      "kind": "参赛高校发布的赛事报道",
+      "summary": "决赛报道将个人求职经验、对旷野心态后果的讨论和对自由与意义关系的概括放在同一主线下。",
+      "limitations": "为一方报道的局部概述，没有双方完整实录；不能据此仿造对方承认或完整结辩。"
+    },
+    {
+      "id": "OF-I-HU-2025",
+      "title": "专访胡渐彪：为什么说思辨和表达，是走遍世界的必修课",
+      "publisher": "学人scholar，澎湃号·湃客刊载",
+      "published": "2025-04-27",
+      "url": "https://www.thepaper.cn/newsDetail_forward_30722353",
+      "kind": "本人问答专访",
+      "access": "可读访谈正文，重点阅读辩论经历、不同立场合理性、归因与表达链条相关问答；未听网页音频。",
+      "summary": "先理解对方为什么有道理，再解释自己为何仍选这一方；同一困境可能有不同成因，切入口应对应可证明的机制。",
+      "limitations": "访谈经验不是实验结论；不能把选择有代价改写成所有选项效果相同。"
+    },
+    {
+      "id": "OF-I-LUO-2020",
+      "title": "思与远方 | MBAer罗淼：从体制内到企业人，我的思考和言说",
+      "publisher": "四川大学商学院MBA搜狐号",
+      "published": "2020-11-26",
+      "url": "https://www.sohu.com/a/434521360_722339",
+      "kind": "机构发布的本人问答",
+      "access": "可读问答正文，包括个人经历及辩论如何影响工作理念；不是技战术逐项教学。",
+      "summary": "把辩论当作有步骤的问题讨论，训练思考与协作，而不以犀利和争口舌之快作为写稿目标。",
+      "limitations": "不能从这篇职业访谈推定具体一场的论证链或个人固定打法。"
+    },
+    {
+      "id": "OF-I-ZHAN-2020",
+      "title": "对话詹青云：讲自己想说的话",
+      "publisher": "贾天天采访，澎湃号·湃客刊载",
+      "published": "2020-06-02",
+      "url": "https://www.thepaper.cn/newsDetail_forward_7665949",
+      "kind": "本人问答专访",
+      "access": "可读问答正文；重点阅读辩位、抓重点、持不同立场与辩题设计问答；图注另列老友赛经历。",
+      "summary": "从双方共同原则推出真实分歧，保留对手有价值的部分；结辩应抓住重点，而非靠行话和语言定式争输赢。",
+      "limitations": "采访体现本人偏好，不能据此豁免四辩回应交锋，也不能把所有辩题写成个人感想。"
+    },
+    {
+      "id": "OF-I-ZHAN-PANG-2019",
+      "title": "专访｜詹青云&庞颖：很在乎通过辩题传递价值",
+      "publisher": "澎湃新闻，记者范佳来",
+      "published": "2019-06-21",
+      "url": "https://m.thepaper.cn/newsDetail_forward_3724842",
+      "kind": "记者现场采访与本人问答",
+      "access": "可读采访正文，重点阅读表达目的、观众理解、公共议题不同层次的讨论；没有观看现场视频。",
+      "summary": "先让听众理解理由，再安排梗和故事；复杂问题应辨清法律、伦理、情感和执行层次，避免刚站队就只替立场找理由。",
+      "limitations": "标题的传递价值不等于每稿必须升华；比赛中仍要回答原题与比较责任。"
+    },
+    {
+      "id": "OF-I-PANG-2021",
+      "title": "番外：做辩论教练，是一件我少有会承认自己有天赋的事",
+      "publisher": "看理想，《不合时宜》对谈编辑节录",
+      "published": "2021-09-23",
+      "url": "https://www.vistopia.com.cn/article/471834",
+      "kind": "本人对谈的公开文字节录",
+      "access": "只读页面公开的两组问答，未听付费课程、试听或完整播客。",
+      "summary": "辩论规则让现实中强弱不同的观点也有机会被认真提出；准备时应呈现对方最有力理由，回应观点而非借身份压人。",
+      "limitations": "公开节录较短，不能作为完整教练方法论或具体比赛复盘。"
+    },
+    {
+      "id": "OF-M-2018-ORGANIZER",
+      "title": "回顾｜端午3天，超强明星阵容的“辩坛老友赛”",
+      "publisher": "时代地产搜狐号（发起方时代中国相关账号）",
+      "published": "2018-06-22",
+      "url": "https://www.sohu.com/a/237295579_250840",
+      "kind": "举办方赛后报道与短节录",
+      "access": "已读报道正文、赛制说明、三天赛程和胡渐彪短句；未读完整陈词或观看嵌入视频。",
+      "summary": "短节录提示可从信息公开与个人抉择的关系寻找争议；仍须补充知情、自主与后果的具体论证。",
+      "limitations": "没有辩位、完整持方和攻防链，不能由一句话还原整场；黄执中在此为评委，不能记成参赛辩手。"
+    },
+    {
+      "id": "OF-M-2023-08-OFFICIAL",
+      "title": "“独立女性”是平权的号召还是新的枷锁【2023华语辩坛老友赛第八场】",
+      "publisher": "华语辩坛老友赛官方账号",
+      "published": "2023-06-23",
+      "url": "https://www.bilibili.com/video/BV1Xk4y1M74f/",
+      "kind": "官方比赛视频的搜索索引与简介",
+      "access": "搜索可见官方账号、赛事说明、题目与双方名单；直接打开返回412；未观看视频、未读字幕。",
+      "summary": "不从标题或名单提取比赛技巧。",
+      "limitations": "仅用于场次和参赛身份核对；不能支持对该场全程的评价。"
+    },
+    {
+      "id": "OF-M-2023-08-EXCERPT",
+      "title": "我们选择站在这里，不是因为我们有多年轻漂亮｜灵感手抄本",
+      "publisher": "TOPYS",
+      "published": null,
+      "url": "https://www.topys.cn/article/34582",
+      "kind": "媒体短节录合集",
+      "access": "只读文末标注詹青云、2023老友赛结辩的两句节录，不是结辩全文。",
+      "summary": "可启发辨别倡议是否被误解为对个人的统一形象要求；这是候选切口，不是已复原的全场主线。",
+      "limitations": "未显示具体发布日期；不能据短节录推断所有定义、判准或胜负。"
+    },
+    {
+      "id": "OF-M-2023-06-VIDEO",
+      "title": "【罗淼结辩】要不要踏上一段注定无法回头的伟大冒险",
+      "publisher": "一起看辩论吧（非官方转载账号）",
+      "published": "2023-06-30",
+      "url": "https://www.bilibili.com/video/BV1MP411e7ye/",
+      "kind": "比赛视频的搜索索引与简介",
+      "access": "仅搜索可见简介；直接打开返回412；没有观看、没有字幕。",
+      "summary": "不从视频标题和网络金句提取写法。",
+      "limitations": "非官方转载，仅作参赛线索；辩位由标题标为结辩，未独立核验场内分工。"
+    },
+    {
+      "id": "OF-M-WANG-MEMO-2025",
+      "title": "这是一篇老友赛辩论赛前预测",
+      "publisher": "汪有微博，新浪新闻呈现",
+      "published": "2025-04-15",
+      "url": "https://www.sina.cn/news/detail/5155842663908040.html",
+      "kind": "参赛者回忆与赛前个人预测",
+      "access": "已读正文，采用其回忆曾与罗淼、马薇薇组队打冒险题的部分；不采用赛果预测。",
+      "summary": "没有用于技巧归纳。",
+      "limitations": "包含玩笑和预测；不能记为当年决赛赛果，也不能作为整场技术分析。"
+    },
+    {
+      "id": "WC-S1",
+      "title": "华语辩论与演讲2025年第3期·辩词精粹·正反",
+      "url": "https://29575939.s21i.faiusr.com/61/ABUIABA9GAAg3JDExgYouoPlqgY.pdf",
+      "publisher": "三门出版社",
+      "published": "2025年第3期",
+      "kind": "刊载稿PDF",
+      "access": "下载PDF并提取阅读印刷页78—83，PDF第78—83页；不是音视频实录。",
+      "summary": "已读双方立论和结辩四篇刊载全文。正方围绕受冲击后的反思变革组织因果，反方围绕受挫后的恢复能力组织比较。",
+      "limitations": "刊载稿不含质询、自由辩及完整现场回应；历史、个体故事和跨文化概括未另核。"
+    },
+    {
+      "id": "WC-S2",
+      "title": "2025华语辩论世界杯总决赛",
+      "url": "https://www.threegates.org/sys-nd/285.html",
+      "publisher": "三门出版社",
+      "published": "2025-09-25",
+      "kind": "赛事说明",
+      "access": "已读网页正文。",
+      "summary": "明确大学组决赛、地点及苦的淬炼／乐的智慧辩题。",
+      "limitations": "题解不是双方发言。"
+    },
+    {
+      "id": "WC-S3",
+      "title": "2025华语辩论世界杯在北京顺利闭幕",
+      "url": "https://sdxw.iqilu.com/share/YS0yMS0xNjYxMjU4MA%3D%3D.html",
+      "publisher": "新华社客户端报道，闪电新闻转载",
+      "published": "2025-07-13",
+      "kind": "赛后新闻",
+      "access": "已读新闻正文。",
+      "summary": "7月12日总决赛，中国人民大学对澳门科技大学。",
+      "limitations": "只核场次，不能从赛果推断某写法必胜。"
+    },
+    {
+      "id": "WC-S4",
+      "title": "华语辩论与演讲2025年第1期·辩词精粹·正反",
+      "url": "https://29575939.s21i.faiusr.com/61/ABUIABA9GAAgmM78wAYowfev0QI.pdf",
+      "publisher": "三门出版社",
+      "published": "2025年第1期",
+      "kind": "刊载稿PDF",
+      "access": "已读大学组决赛说明及双方立论、结辩全文，印刷页83—89，双页PDF第42—45页。",
+      "summary": "正方把审美共鸣与传播吸引力连到判准；反方把文化延续与概念特色分作两个论点，结辩用当代实践承接主张。",
+      "limitations": "不含完整交锋；刊内小学组表演赛、高中组决赛为其他条目，不混入本场。"
+    },
+    {
+      "id": "WC-S5",
+      "title": "2024华语辩论世界杯名校邀请赛三亚收官",
+      "url": "https://www.sanyarb.com.cn/sanyazonghe/2024/10/20/detail_20241020420019.html",
+      "publisher": "三亚新闻网",
+      "published": "2024-10-20",
+      "kind": "当地媒体赛后报道",
+      "access": "已读正文。",
+      "summary": "核对10月19日澳门科技大学与中国人民大学的境／道决赛。",
+      "limitations": "名校邀请赛单列，不改称年度主赛总决赛。"
+    }
+  ],
+  "priority_matches": [
+    {
+      "id": "NI-2019-SF1",
+      "event": "2019第七届国际华语辩论邀请赛",
+      "stage": "正赛半决赛第一场",
+      "date": "2019-12-17",
+      "topic": "被误解是／不是表达者的宿命",
+      "affirmative": "东吴大学",
+      "negative": "武汉大学",
+      "stage_evidence": [
+        "NI-S1",
+        "NI-S2"
+      ],
+      "substance_evidence": [
+        "NI-S1"
+      ],
+      "read_scope": "双方关键路线与赛后点评的文字复盘；未读任何辩位全文。",
+      "methods": [
+        {
+          "roles": [
+            "一辩",
+            "二辩",
+            "四辩",
+            "框架"
+          ],
+          "method": "区分常见风险、不可避免与行动建议，不能用同一证据跨过不同证明门槛。"
+        }
+      ],
+      "limits": "文字复盘或一方专访/报道，未读双方逐字稿、未观看视频；方法为研究者推论。"
+    },
+    {
+      "id": "NI-2019-SF2",
+      "event": "2019第七届国际华语辩论邀请赛",
+      "stage": "正赛半决赛第二场",
+      "date": "2019-12-17",
+      "topic": "哲学增加／减少人生困惑",
+      "affirmative": "清华大学",
+      "negative": "马来亚大学",
+      "stage_evidence": [
+        "NI-S1",
+        "NI-S2"
+      ],
+      "substance_evidence": [
+        "NI-S1"
+      ],
+      "read_scope": "定义争点与评委破题意见的文字复盘；未读各辩位全文。",
+      "methods": [
+        {
+          "roles": [
+            "一辩",
+            "三辩",
+            "二辩",
+            "框架",
+            "自由辩"
+          ],
+          "method": "比较前交代原先状态；概念范围贯穿全场，类比只检验逻辑而非代替实证。"
+        }
+      ],
+      "limits": "文字复盘或一方专访/报道，未读双方逐字稿、未观看视频；方法为研究者推论。"
+    },
+    {
+      "id": "NI-2019-F",
+      "event": "2019第七届国际华语辩论邀请赛",
+      "stage": "正赛决赛",
+      "date": "2019-12-18",
+      "topic": "道可道／道不可道",
+      "affirmative": "东吴大学",
+      "negative": "马来亚大学",
+      "stage_evidence": [
+        "NI-S1",
+        "NI-S2"
+      ],
+      "substance_evidence": [
+        "NI-S1"
+      ],
+      "read_scope": "三项语义争议与部分点评的文字复盘；未读完整立论或结辩。",
+      "methods": [
+        {
+          "roles": [
+            "一辩",
+            "四辩",
+            "攻防",
+            "框架",
+            "破题帮助"
+          ],
+          "method": "把抽象短题拆为讨论对象、成立门槛与表达方式，定义落实为举证任务。"
+        }
+      ],
+      "limits": "文字复盘或一方专访/报道，未读双方逐字稿、未观看视频；方法为研究者推论。"
+    },
+    {
+      "id": "NI-2025-SF",
+      "event": "2025第十二届国际华语辩论邀请赛",
+      "stage": "高校组正赛半决赛上半赛区",
+      "date": "2025-01-17",
+      "topic": "向下的自由是／不是自由",
+      "affirmative": "西南政法大学",
+      "negative": "武汉大学",
+      "stage_evidence": [
+        "NI-S4",
+        "NI-S5"
+      ],
+      "substance_evidence": [
+        "NI-S3"
+      ],
+      "read_scope": "武大专访对半决赛备赛路线的说明；官方页仅核目录。",
+      "methods": [
+        {
+          "roles": [
+            "一辩",
+            "三辩",
+            "二辩",
+            "攻防",
+            "破题帮助",
+            "自由辩"
+          ],
+          "method": "检验被捆绑概念的现实条件；挑战题面分类仍须回答原题，不靠改名取胜。"
+        }
+      ],
+      "limits": "文字复盘或一方专访/报道，未读双方逐字稿、未观看视频；方法为研究者推论。"
+    },
+    {
+      "id": "NI-2025-F",
+      "event": "2025第十二届国际华语辩论邀请赛",
+      "stage": "高校组正赛决赛",
+      "date": "2025-01-19",
+      "topic": "人生应有轨道／人生应是旷野",
+      "affirmative": "武汉大学",
+      "negative": "马来亚大学",
+      "stage_evidence": [
+        "NI-S5"
+      ],
+      "substance_evidence": [
+        "NI-S3",
+        "NI-S5"
+      ],
+      "read_scope": "武大专访的论点来源及武汉大学报道对四个辩位的简述；未读双方全文。",
+      "methods": [
+        {
+          "roles": [
+            "一辩",
+            "三辩",
+            "二辩",
+            "四辩",
+            "框架",
+            "破题帮助"
+          ],
+          "method": "心理选择与风险归责可走不同因果链；后续辩位补证明环节，不重复开篇。"
+        }
+      ],
+      "limits": "文字复盘或一方专访/报道，未读双方逐字稿、未观看视频；方法为研究者推论。"
+    },
+    {
+      "id": "WC-2025-F",
+      "event": "2025华语辩论世界杯",
+      "stage": "大学组正赛决赛",
+      "date": "2025-07-12",
+      "topic": "中华文化的“韧性”更源于苦的淬炼／乐的智慧",
+      "affirmative": "中国人民大学",
+      "negative": "澳门科技大学",
+      "stage_evidence": [
+        "WC-S1",
+        "WC-S2",
+        "WC-S3"
+      ],
+      "substance_evidence": [
+        "WC-S1"
+      ],
+      "read_scope": "双方立论与结辩四篇刊载全文；无现场质询、自由辩和全程实录。",
+      "speech_locations": [
+        "正方立论：印刷页78—79",
+        "正方结辩（程一）：80",
+        "反方立论：81—82",
+        "反方结辩（王凯霆）：82—83"
+      ],
+      "methods": [
+        {
+          "roles": [
+            "framework",
+            "first",
+            "second"
+          ],
+          "method": "因果题先区分诱发冲击、回应过程与结果，不能只用先发生证明更根本。"
+        },
+        {
+          "roles": [
+            "fourth"
+          ],
+          "method": "定义的区别须导出比较任务；日常例子可帮助理解，不能独自证明整体文化结论。"
+        }
+      ],
+      "limits": "方法为研究者推论；不照搬其个人经历、文化概括或宏大收束，也不据稿件复原现场承认。"
+    },
+    {
+      "id": "WC-2024-INV-F",
+      "event": "2024华语辩论世界杯名校邀请赛（赛事变体，单列）",
+      "stage": "大学组正赛决赛",
+      "date": "2024-10-19",
+      "topic": "中华文化的精髓更在于境／道",
+      "affirmative": "澳门科技大学",
+      "negative": "中国人民大学",
+      "stage_evidence": [
+        "WC-S4",
+        "WC-S5"
+      ],
+      "substance_evidence": [
+        "WC-S4"
+      ],
+      "read_scope": "双方立论与结辩四篇刊载全文；无完整现场交锋。",
+      "speech_locations": [
+        "正方立论：印刷页84—85",
+        "正方结辩（曾梓翔）：85—86",
+        "反方立论：86—88",
+        "反方结辩（程一）：88—89"
+      ],
+      "methods": [
+        {
+          "roles": [
+            "framework",
+            "first"
+          ],
+          "method": "抽象判断先转成可比较的评价维度，再检查维度是否公平；不能靠定义排除对手。"
+        },
+        {
+          "roles": [
+            "second",
+            "third",
+            "free",
+            "fourth"
+          ],
+          "method": "不同材料各自承担证明任务；后续辩位检验并回收，诗句和意象不能补上缺失推理。"
+        }
+      ],
+      "limits": "刊载结辩有强修辞；只学材料服务主张的组织，不把修辞当证明，不仿造作者经历。"
+    }
+  ],
+  "old_friends_people": [
+    {
+      "name": "胡渐彪",
+      "interview_source_ids": [
+        "OF-I-HU-2025"
+      ],
+      "old_friends_match_ids": [
+        "OF-2018-GOD"
+      ],
+      "qualification": "资深辩手、教练和办赛人经历有本人专访；老友赛具体参赛有举办方报道。",
+      "study_use": "主要从访谈学习比较和归因；神的铁证场仅作有短节录的场次索引。"
+    },
+    {
+      "name": "罗淼",
+      "interview_source_ids": [
+        "OF-I-LUO-2020"
+      ],
+      "old_friends_match_ids": [
+        "OF-2023-06"
+      ],
+      "qualification": "机构专访列12年经历、教练与2019老友赛冠军；2023具体场次由队友回忆和视频简介交叉支持。",
+      "study_use": "主要采用问题讨论、团队协作的方向；本轮未获取老友赛完整陈词。"
+    },
+    {
+      "name": "詹青云",
+      "interview_source_ids": [
+        "OF-I-ZHAN-2020",
+        "OF-I-ZHAN-PANG-2019"
+      ],
+      "old_friends_match_ids": [
+        "OF-2023-08"
+      ],
+      "qualification": "长期参赛、组织队伍及四辩经验见本人访谈；官方第八场简介列其参赛。",
+      "study_use": "从专访提炼抓重点、呈现真实分歧；场次只读短节录。"
+    },
+    {
+      "name": "庞颖",
+      "interview_source_ids": [
+        "OF-I-ZHAN-PANG-2019",
+        "OF-I-PANG-2021"
+      ],
+      "old_friends_match_ids": [
+        "OF-2023-08"
+      ],
+      "qualification": "公开对谈回顾国大及带两支队伍的经验；官方第八场简介列其参赛。",
+      "study_use": "从专访学习让不同观点得到认真对待、让逻辑抵达听众；不推断未读的本场立论。"
+    }
+  ],
+  "old_friends_match_indexes": [
+    {
+      "id": "OF-2018-GOD",
+      "event": "2018华语辩坛老友赛第三季",
+      "match_date": "2018-06-16",
+      "round": "举办方按日程列出的具体场次，未给轮次名称",
+      "topic": "如果只有你有铁证证明神不存在，你应该/不应该公开",
+      "teams": [
+        "马来亚大学（原报道部分作马来西亚大学）",
+        "香港中文大学"
+      ],
+      "selected_debaters": [
+        "胡渐彪"
+      ],
+      "metadata_source_ids": [
+        "OF-M-2018-ORGANIZER"
+      ],
+      "content_source_ids": [
+        "OF-M-2018-ORGANIZER"
+      ],
+      "content_coverage": "short_excerpt_only",
+      "usable_for_full_match_analysis": false
+    },
+    {
+      "id": "OF-2023-06",
+      "event": "2023第六届华语辩坛老友赛",
+      "round": "第六场（不冒称半决赛或决赛）",
+      "topic": "要不要踏上一段注定无法回头的伟大冒险",
+      "selected_debaters": [
+        "罗淼"
+      ],
+      "metadata_source_ids": [
+        "OF-M-2023-06-VIDEO",
+        "OF-M-WANG-MEMO-2025"
+      ],
+      "content_source_ids": [],
+      "content_coverage": "metadata_only",
+      "usable_for_full_match_analysis": false
+    },
+    {
+      "id": "OF-2023-08",
+      "event": "2023第六届华语辩坛老友赛",
+      "round": "第八场（官方简介）",
+      "topic": "“独立女性”是平权的号召还是新的枷锁",
+      "selected_debaters": [
+        "詹青云",
+        "庞颖"
+      ],
+      "metadata_source_ids": [
+        "OF-M-2023-08-OFFICIAL"
+      ],
+      "content_source_ids": [
+        "OF-M-2023-08-EXCERPT"
+      ],
+      "content_coverage": "short_excerpt_only",
+      "usable_for_full_match_analysis": false
+    }
+  ],
+  "exclusions": [
+    "附加赛、小组赛、明星表演赛和仅标题的条目不作为本轮新国辩/世界杯重点场次。",
+    "旧结辩研究和历史赛事索引保留作补充，不因更新自动获得阶段核验。",
+    "未交叉核验的个人观后感、AI总结站、未发生的赛程不计作实读比赛。"
+  ],
+  "implementation_map": [
+    {
+      "change": "本题切入点、比较基线、举证门槛与风险",
+      "guide": "topic-breakthrough.md",
+      "inspiration": [
+        "NI-S1",
+        "NI-S3",
+        "WC-S1",
+        "OF-I-HU-2025"
+      ]
+    },
+    {
+      "change": "各辩位围绕同一主线补证明",
+      "guide": "all-role-argument-quality.md",
+      "inspiration": [
+        "NI-S5",
+        "OF-I-LUO-2020",
+        "WC-S4"
+      ]
+    },
+    {
+      "change": "结辩清楚比较，不强制升华",
+      "guide": "clear-closing-style.md",
+      "inspiration": [
+        "OF-I-ZHAN-2020",
+        "OF-I-ZHAN-PANG-2019",
+        "WC-S1",
+        "WC-S4"
+      ]
+    }
+  ]
+}

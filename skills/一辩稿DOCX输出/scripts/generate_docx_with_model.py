@@ -16,6 +16,8 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
 STYLE_GUIDE_PATH = PROJECT_ROOT / "references" / "natural-first-speaker-style.md"
 HUMANIZER_GUIDE_PATH = PROJECT_ROOT / 'skills' / 'humanizer-zh' / 'SKILL.md'
+BREAKTHROUGH_GUIDE_PATH = PROJECT_ROOT / 'references' / 'topic-breakthrough.md'
+ARGUMENT_QUALITY_GUIDE_PATH = PROJECT_ROOT / 'references' / 'all-role-argument-quality.md'
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 if str(Path(__file__).resolve().parent) not in sys.path:
@@ -68,6 +70,20 @@ def load_humanizer_guide() -> str:
             '本次仅采用该技能的表达修改方法，不输出其独立任务中的评分、修改说明、'
             '额外修订报告或过程；最终格式由后置辩位规则与JSON协议决定。'
             '不承诺降低AI检测分数或通过检测。润色完成后再从最终body填写逐字摘录检查项。')
+
+
+def load_argument_quality_guides() -> str:
+    """Load current topic/role guidance in both API entry points, in the same call."""
+    parts = []
+    for title, path in (
+        ('本题破题与切入点', BREAKTHROUGH_GUIDE_PATH),
+        ('各辩位论证质量：只采用本次请求辩位的任务', ARGUMENT_QUALITY_GUIDE_PATH),
+    ):
+        guide = path.read_text(encoding='utf-8-sig').strip()
+        if not guide:
+            raise ValueError(f'论证写作指南为空：{path}')
+        parts.append(f'【{title}】\n{guide}')
+    return '\n\n'.join(parts)
 
 
 def word_budget(duration: str) -> tuple[int, int, int] | None:
@@ -124,6 +140,7 @@ def make_prompts(topic: str, side: str, duration: str, context: str, extra: str,
     if humanizer:
         system_prompt += '\n\n' + humanizer
     system_prompt += '\n\n【辩论适配优先：保留原题、判准、举证责任和重大反证，不得以重定义问题或更强语气替代事实】\n' + (PROJECT_ROOT / 'references' / 'debate-anti-defensive-writing.md').read_text(encoding='utf-8')
+    system_prompt += '\n\n' + load_argument_quality_guides()
     system_prompt += '\n\n' + REQUIREMENTS_PROMPT
     user_prompt = f"""请生成一篇华语辩论一辩稿。
 
@@ -132,7 +149,7 @@ def make_prompts(topic: str, side: str, duration: str, context: str, extra: str,
 目标发言时长：{duration}
 正文目标字数：{length_note}（语速310–340字/分钟，参考325字/分钟）
 
-请根据以下资料与额外要求写稿。注意：若资料未提供可核验的赛事稿件或实证来源，不得声称已经完成检索或阅读；也不得虚构来源。
+请根据以下资料与额外要求写稿。沿用资料中已确认的核心切入点与判准，把它落实到分论点、机制和证据解释；不要将内部候选路线全部塞进口播。若缺少已确认路线，说明框架缺口，不擅自改题或另定判准。注意：若资料未提供可核验的赛事稿件或实证来源，不得声称已经完成检索或阅读；也不得虚构来源。
 
 【研究材料：分开标明已核验事实、真实实例及出处；样稿与录音转写只作方法参考】
 {context if context else "（用户未提供已核验资料。请避免编造任何数据或参考文献；如无法给出可靠实证，请明确标记证据缺口。）"}

@@ -1,0 +1,295 @@
+{
+  "schema_version": 1,
+  "researched_at": "2026-11-11",
+  "speech_count": 12,
+  "unique_source_count": 8,
+  "scope": "结辩写法观察，只保存元信息和原创短评；不是事实证据库，未保存比赛全文。",
+  "audio_or_video_listened": false,
+  "factual_claims_independently_verified": false,
+  "source_boundaries": [
+    {
+      "source_id": "S93",
+      "url": "https://ivantsoi.myds.me/web/schoolebook/pdf/039083.pdf",
+      "title": "狮城舌战 网络 PDF 文本镜像",
+      "type": "participant_book_transcript_third_party_mirror",
+      "access": "selected_complete_closing_texts_read",
+      "provenance_evidence": "书中前言说明由复旦参赛团队编写并收录比赛辩词，决赛部分列出辩题、双方、日期及主席报幕",
+      "credibility": "参赛方书籍来源线索较强，但镜像不在出版社或赛事主办方官网；未与录音逐字核对",
+      "pdf_text_parser_total_pages": 188,
+      "pdf_page_images_inspected": false,
+      "page_locator_note": "记录的是网页 PDF 文本解析的零基页索引，未当作书中印刷页码",
+      "analysis_scope": "同源两篇短评合计控制在200词以内；没有保存原稿或名句"
+    },
+    {
+      "source_id": "S97",
+      "url": "https://bbs.bianlun.net/forum.php?extra=page%3D1&mod=viewthread&ordertype=1&tid=10348",
+      "title": "梦断狮城 97国辩会回顾之大决赛真理越辩越明篇",
+      "type": "community_forum_full_match_transcript_repost",
+      "publication_year": 2003,
+      "access": "selected_complete_closing_texts_read",
+      "provenance_evidence": "转载段标为1997国际大专辩论会大决赛辩词实录，包含双方、主持人、四辩姓名、总结报幕及下一环节",
+      "credibility": "非官方转载；可确认页面内的阶段与身份标注，原始录音、标点和文字准确性未核对",
+      "analysis_scope": "同源两篇短评合计控制在200词以内；没有保存比赛正文"
+    }
+  ],
+  "modern_source_caveats": [
+    "刊载稿可能经整理，不能当作音视频的已逐字核验转录。",
+    "样本中的数据、心理机制、历史和第三人引文均未独立核实，不能直接转成新稿事实证据。",
+    "分析是从文本归纳的可迁移方法，不证明样本每句都成立。",
+    "只学组织与表达，不能抄故事、比喻、独特措辞或场上事实。"
+  ],
+  "excluded_leads": [
+    {
+      "url": "https://www.bilibili.com/read/cv107149/",
+      "reason": "赛评与阶段要点；未用于充当完整四辩陈词"
+    },
+    {
+      "url": "https://blog.wenxuecity.com/myblog/72696/202412/32.html",
+      "reason": "搜索可见局部、正文抓取403，未计为全文已读；1993完整阅读改用书籍文本镜像"
+    },
+    {
+      "url": "https://www.bilibili.com/video/BV1qX4y1m73R/",
+      "reason": "只检索到视频页信息；没有观看、听取或据此评价实际停顿与语调"
+    },
+    {
+      "speaker": "林正疆",
+      "url": "https://www.bilibili.com/video/BV1we411F7Re/",
+      "reason": "只实际读到2022星辩4.0结辩视频标题和发布者简介，没有连续全文，不分析声调或整段结构。"
+    },
+    {
+      "speaker": "庞颖",
+      "url": "https://www.sina.cn/news/detail/5334818019609582.html",
+      "reason": "2026直播相关页面主要是观众感想，不能据标题中的逐字稿声称已读完整结辩。"
+    },
+    {
+      "speaker": "黄思晗",
+      "url": "https://www.douyin.com/shipin/7311221976931092506",
+      "reason": "搜索可见文本拼接多个片段且转写噪声较大，无法稳定确认署名结辩的完整起止。"
+    },
+    {
+      "speaker": "黄执中",
+      "url": "https://www.sohu.com/a/324672327_732759",
+      "reason": "文章含较旧综艺末轮陈词及风格评论，非本任务优先的较新四辩连续赛事实录；不据此凑现代样本。"
+    },
+    {
+      "speaker": "罗淼",
+      "url": "https://www.macaudata.mo/uploads/books/pdf/410b93f2bcee4ce2833678e2e05babf0888.pdf",
+      "reason": "检索命中2024蓝图题正方结辩，但PDF打开超大小限制，搜索只呈现首段与跨页片段，未读到完整末尾，不列完整样本。"
+    },
+    {
+      "speaker": "庞颖／詹青云",
+      "url": "https://news.ifeng.com/c/8guZikdCZRt",
+      "reason": "为节目对谈整理，未明确四辩结辩环节，不当结辩样本。"
+    }
+  ],
+  "speeches": [
+    {
+      "id": "C93N",
+      "event": "1993年国际大专辩论会决赛",
+      "topic": "人性本善／人性本恶",
+      "speaker": "蒋昌建",
+      "side": "反方，复旦大学",
+      "stage": "四辩总结陈辞",
+      "url": "https://ivantsoi.myds.me/web/schoolebook/pdf/039083.pdf",
+      "source_type": "participant_book_transcript_third_party_mirror",
+      "locator": {
+        "pdf_text_parser_zero_based_pages": [
+          168,
+          169
+        ],
+        "section": "决赛辩词实录",
+        "start_boundary": "主席介绍反方第四位代表蒋昌建作四分钟总结后",
+        "end_boundary": "蒋昌建致谢、主席转请正方第四位代表王信国之前"
+      },
+      "read_scope": "上述边界内完整总结文字及邻近报幕；没有读完整本书，也没有据视频标题推定已读",
+      "method_note": "先纠正争点，再回收全队论证。学回应与归纳；不把末尾诗句和宏观排比设为固定动作。",
+      "full_published_closing_read": true
+    },
+    {
+      "id": "C93P",
+      "event": "1993年国际大专辩论会决赛",
+      "topic": "人性本善／人性本恶",
+      "speaker": "王信国",
+      "side": "正方，台湾大学",
+      "stage": "四辩总结陈辞",
+      "url": "https://ivantsoi.myds.me/web/schoolebook/pdf/039083.pdf",
+      "source_type": "participant_book_transcript_third_party_mirror",
+      "locator": {
+        "pdf_text_parser_zero_based_pages": [
+          169,
+          170
+        ],
+        "section": "决赛辩词实录",
+        "start_boundary": "主席介绍正方第四位代表王信国作总结后",
+        "end_boundary": "王信国致谢、主席请评判团退席之前"
+      },
+      "read_scope": "上述边界内完整总结文字及邻近报幕；未核对录音",
+      "method_note": "按推理问题归组并解释关系。学归类；不扩大对方主张，也不用道德压力替代论证。",
+      "full_published_closing_read": true
+    },
+    {
+      "id": "C97N",
+      "event": "1997年国际大专辩论会决赛",
+      "topic": "真理越辩越明／真理不会越辩越明",
+      "speaker": "叶纹豪",
+      "side": "反方，马来亚大学",
+      "stage": "四辩总结陈词",
+      "url": "https://bbs.bianlun.net/forum.php?extra=page%3D1&mod=viewthread&ordertype=1&tid=10348",
+      "source_type": "community_forum_full_match_transcript_repost",
+      "locator": {
+        "section": "1997国际大专辩论会大决赛辩词实录",
+        "start_boundary": "主席介绍反方第四位代表叶纹豪作四分钟总结后",
+        "end_boundary": "叶纹豪致谢、主席转请正方第四位代表李雪霞之前"
+      },
+      "read_scope": "上述边界内完整总结文字及相关自由辩片段、双方身份说明；未看视频或听录音",
+      "method_note": "围绕证明标准归组，接回队友已经完成的任务。学问题分工；不将连排提问代替答案。",
+      "full_published_closing_read": true
+    },
+    {
+      "id": "C97P",
+      "event": "1997年国际大专辩论会决赛",
+      "topic": "真理越辩越明／真理不会越辩越明",
+      "speaker": "李雪霞",
+      "side": "正方，首都师范大学",
+      "stage": "四辩总结陈词",
+      "url": "https://bbs.bianlun.net/forum.php?extra=page%3D1&mod=viewthread&ordertype=1&tid=10348",
+      "source_type": "community_forum_full_match_transcript_repost",
+      "locator": {
+        "section": "1997国际大专辩论会大决赛辩词实录",
+        "start_boundary": "主席介绍正方第四位代表李雪霞作四分钟总结后",
+        "end_boundary": "李雪霞致谢、主席请评判团退席之前"
+      },
+      "read_scope": "上述边界内完整总结文字及邻近报幕；未核对原录音",
+      "method_note": "先重申概念与条件；后半长篇历史铺陈不适合作默认结构。收尾应回到具体争议。",
+      "full_published_closing_read": true
+    },
+    {
+      "id": "cctv-2001-negative",
+      "event": "2001年国际大专辩论会总决赛",
+      "topic": "钱是／不是万恶之源",
+      "side": "反方，马来亚大学",
+      "speaker": "胡渐彪",
+      "stage": "反方四辩总结陈述",
+      "url": "https://shaoer.cntv.cn/children/C20880/20100816/100165.shtml",
+      "source_type": "央视网页全场文字实录",
+      "read_scope": "主持人明确报幕四辩与4分钟，至胡渐彪结束谢词；网页行229—242。另读前序交锋以辨别回应来源；未核对录音。",
+      "method_note": "将定义、因果与举例范围分开，追问每步是否足以支持全称结论；借鉴逐层核对证明责任，不照搬讥讽和激烈反问。",
+      "fact_verification": "speech_structure_only_not_evidence",
+      "full_published_closing_read": true
+    },
+    {
+      "id": "cctv-2001-positive",
+      "event": "2001年国际大专辩论会总决赛",
+      "topic": "钱是／不是万恶之源",
+      "side": "正方，武汉大学",
+      "speaker": "周玄毅",
+      "stage": "正方四辩总结陈述",
+      "url": "https://shaoer.cntv.cn/children/C20880/20100816/100165.shtml",
+      "source_type": "央视网页全场文字实录",
+      "read_scope": "主持人报幕至结束谢词，网页行244—250；未核对录音。",
+      "method_note": "先明确本方主张须证明多大范围，再回收解释；后段铺陈和结尾抽象抒情不作默认收束，例子也不当成已核实事实。",
+      "fact_verification": "speech_structure_only_not_evidence",
+      "full_published_closing_read": true
+    },
+    {
+      "id": "cctv-2003-negative",
+      "event": "2003年国际大专辩论会A组初赛第四场",
+      "topic": "广告是否有利于大众消费",
+      "side": "反方，世新大学",
+      "speaker": "黄执中",
+      "stage": "反方总结陈词",
+      "url": "https://shaoer.cntv.cn/children/C20880/20100816/100095.shtml",
+      "source_type": "央视网页全场文字实录",
+      "read_scope": "总结陈词标题、反方标签至结束谢词，网页行224—228；未核对录音。",
+      "method_note": "把动机和角色差别讲成可理解的利益关系，用同一机制回收前面的例子，末尾落回消费者判断。借方法，不承接其中绝对化判断或数字。",
+      "fact_verification": "speech_structure_only_not_evidence",
+      "full_published_closing_read": true
+    },
+    {
+      "id": "cctv-2003-positive",
+      "event": "2003年国际大专辩论会A组初赛第四场",
+      "topic": "广告是否有利于大众消费",
+      "side": "正方，墨尔本大学",
+      "speaker": "萧慧敏（网页标注）",
+      "stage": "正方总结陈词",
+      "url": "https://shaoer.cntv.cn/children/C20880/20100816/100095.shtml",
+      "source_type": "央视网页全场文字实录",
+      "read_scope": "正方总结标签至结束谢词，网页行229—233；未核对录音。",
+      "method_note": "先按对方实际论点逐项回应，再解释本方方案满足什么需要，收束仍指向本题。有结论式反问时应补理由，不能用重复质问代替比较。",
+      "fact_verification": "speech_structure_only_not_evidence",
+      "full_published_closing_read": true
+    },
+    {
+      "id": "MODERN-01",
+      "event": "2025华语辩论世界杯附加赛",
+      "topic": "通俗是辩论之喜／悲",
+      "speaker": "赖香君",
+      "side": "正方：通俗是辩论之喜",
+      "stage": "大学组小组赛，刊载正方结辩",
+      "url": "https://www.macaudata.mo/showbook?bno=j690002",
+      "source_type": "B1：专业期刊编辑刊载，澳门基金会虚拟图书馆全文；不是官方影音逐字核对",
+      "locator": {
+        "issue": "《华语辩论与演讲》2025年第2期",
+        "printed_pages": "122—123"
+      },
+      "stage_evidence": "目录列本场大学组小组赛；第122页明确转入“正方结辩稿”，署名赖香君，与此前立论分开。第123页结尾后接下一篇反方立论。",
+      "read_scope": "已读该署名下从问候开场至下一篇标题前的全部连续刊载文字；末尾未另标谢谢，不据此保证录音毫无删节。",
+      "method_note": "从对方当场表达、议题选择、观众进入三个层次处理争议，逐步把评价拉回传播能否引发思考。可学的是争点有序、回应有对象；不能把对手人格化指责和结尾的绝对判断当成论证。",
+      "full_published_closing_read": true
+    },
+    {
+      "id": "MODERN-02",
+      "event": "2025亚太青少年辩论锦标赛（德阳站）",
+      "topic": "文物的价值，更在让我们知道从何而来／去向何方",
+      "speaker": "席瑞",
+      "side": "反方：更在去向何方",
+      "stage": "表演赛，刊载反方结辩",
+      "url": "https://www.macaudata.mo/showbook?bno=j690004",
+      "source_type": "B1：专业期刊编辑刊载，澳门基金会虚拟图书馆全文；不是赛事录像转写核对",
+      "locator": {
+        "issue": "《华语辩论与演讲》2025年第4期",
+        "printed_pages": "109—110"
+      },
+      "stage_evidence": "第103页列赛事、地点、表演赛和辩题；第109页在反方立论结束后另列“反方结辩稿”及席瑞署名。",
+      "read_scope": "已读109—110页署名结辩开场到谢谢的连续刊载块；未听视频，出版稿可能经编辑。",
+      "method_note": "先回应文物能否自行给答案，再转向当代使用价值；随后用同一生活场景串起文化如何进入日常。可学近距离解释和两段清楚转场；不移用个人见闻，也不让末尾拟人和文化感慨替代比较。",
+      "full_published_closing_read": true
+    },
+    {
+      "id": "MODERN-03",
+      "event": "2026世界名校儒学辩论邀请赛衢州总决赛",
+      "topic": "礼之用，贵在传承／创新",
+      "speaker": "陈耀辉",
+      "side": "正方：贵在传承",
+      "stage": "衢州总决赛·决赛，刊载正方结辩",
+      "url": "https://www.macaudata.mo/showbook?bno=j690006",
+      "source_type": "B1：专业期刊编辑刊载，机构全文阅读；可确认阶段，不保证与影音逐字一致",
+      "locator": {
+        "issue": "《华语辩论与演讲》2026年第2期",
+        "printed_pages": "94（赛事信息见92）"
+      },
+      "stage_evidence": "第92页列衢州总决赛决赛与题目；第94页有正方结辩稿、作者、队伍和完整开闭场。",
+      "read_scope": "已读第94页整篇连续刊载稿，从谢谢主席至谢谢各位；后接下一篇立论，边界清楚。",
+      "method_note": "先接纳工具属性这一共识，再逐项检验对方是否证明了本题的独特价值，区分外在变动和内核延续，最后回到日常践行。主干是举证责任和解释力比较，收尾无需另立宏大价值。",
+      "full_published_closing_read": true
+    },
+    {
+      "id": "MODERN-04",
+      "event": "2026亚太青少年辩论锦标赛（马来西亚站）",
+      "topic": "对的人站在前途里／陪在四季中",
+      "speaker": "胡秋实",
+      "side": "反方：陪在四季中",
+      "stage": "大学组决赛，刊载反方结辩",
+      "url": "https://www.macaudata.mo/showbook?bno=j690005",
+      "source_type": "B1：专业期刊编辑刊载，机构全文阅读；未对照原始影音",
+      "locator": {
+        "issue": "《华语辩论与演讲》2026年第1期",
+        "printed_pages": "83—84"
+      },
+      "stage_evidence": "本期目录列大学组决赛及双方队伍；第83页明确反方结辩稿及胡秋实署名，第84页连续到结尾。",
+      "read_scope": "已读83—84页全部署名结辩，从开场的三项议程到谢谢各位；不是摘取领带夹故事单独分析。",
+      "method_note": "按伤害归因、同频机制、代价底线处理三处交锋，再用私人信物把已论证的陪伴落到具体生活。可学三问三答和明确承认代价；不复制信物故事，不把相关因素直接升级为决定原因。",
+      "full_published_closing_read": true
+    }
+  ]
+}

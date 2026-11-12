@@ -20,22 +20,12 @@ import tempfile
 from urllib.parse import urlsplit
 
 from docx import Document
-from docx.enum.section import WD_ORIENT
-from docx.enum.table import WD_TABLE_ALIGNMENT, WD_CELL_VERTICAL_ALIGNMENT
-from docx.enum.text import WD_ALIGN_PARAGRAPH
-from docx.opc.constants import RELATIONSHIP_TYPE as RT
-from docx.text.run import Run
-from docx.oxml import OxmlElement
-from docx.oxml.ns import qn
-from docx.shared import Cm, Pt, RGBColor
-
-from export_to_docx import default_products_dir, set_run_font, set_style_font, speech_filename
+from export_to_docx import default_products_dir, speech_filename
+from material_table_layout import HEADERS, COLUMN_WIDTHS_CM, append_material_table
 
 
 CATEGORIES = ("进攻", "防守", "证明")
 NO_MATERIAL_MESSAGE = "本次未找到可核验的相关论据"
-HEADERS = ("编号", "论据与材料", "用途", "适用条件", "核验说明与来源")
-COLUMN_WIDTHS_CM = (1.5, 6.5, 4.8, 4.3, 9.6)
 TEXT_FIELDS = ("claim", "material", "usage", "limitation", "verification_note")
 SOURCE_FIELDS = ("author", "title", "date", "url")
 UNKNOWN_SOURCE_VALUES = frozenset({
@@ -94,6 +84,10 @@ def validate_payload(payload) -> list[dict]:
                 or len(set(categories)) != len(categories)):
             raise ValueError(f"{prefix}.categories 必须包含进攻、防守、证明中的一个或多个不同类别。")
         result = {"id": identifier, "verified": True, "categories": list(categories)}
+        if 'group' in item:
+            result['group'] = _text(item['group'], f'{prefix}.group')
+        if 'encounter' in item:
+            result['encounter'] = _text(item['encounter'], f'{prefix}.encounter')
         for field in TEXT_FIELDS:
             result[field] = _text(item.get(field), f"{prefix}.{field}")
         sources = item.get("sources")
@@ -111,6 +105,8 @@ def validate_payload(payload) -> list[dict]:
                     raise ValueError(f"{source_prefix}.{field} 不能使用未知或待核验占位内容。")
                 checked[field] = text
             checked["url"] = _source_url(checked["url"], f"{source_prefix}.url")
+            if 'link_label' in source:
+                checked['link_label'] = _text(source['link_label'], f'{source_prefix}.link_label')
             result["sources"].append(checked)
         normalized.append(result)
     return normalized
@@ -122,122 +118,21 @@ def argument_table_filename(topic: str, side: str) -> str:
     return filename[:-len("一辩稿.docx")] + "论据资料表.docx"
 
 
-def _cell_paragraph(cell, text: str, *, bold: bool = False, first: bool = False):
-    paragraph = cell.paragraphs[0] if first else cell.add_paragraph()
-    paragraph.paragraph_format.space_after = Pt(3)
-    paragraph.paragraph_format.line_spacing = 1.1
-    paragraph.paragraph_format.keep_with_next = False
-    # Permit long Latin URLs to wrap without inserting characters into the URL.
-    word_wrap = OxmlElement("w:wordWrap")
-    word_wrap.set(qn("w:val"), "0")
-    paragraph._p.get_or_add_pPr().append(word_wrap)
-    run = paragraph.add_run(text)
-    set_run_font(run, east_asia="宋体", latin="Arial")
-    run.font.size = Pt(10)
-    run.bold = bold
-    return paragraph
-
-
-def _cell_hyperlink(cell, url: str):
-    """Keep the full URL readable while making it a real external Word link."""
-    paragraph = _cell_paragraph(cell, "")
-    hyperlink = OxmlElement("w:hyperlink")
-    hyperlink.set(qn("r:id"), paragraph.part.relate_to(url, RT.HYPERLINK, is_external=True))
-    hyperlink.set(qn("w:history"), "1")
-    run_element = OxmlElement("w:r")
-    text = OxmlElement("w:t")
-    text.text = url
-    run_element.append(text)
-    hyperlink.append(run_element)
-    paragraph._p.append(hyperlink)
-    run = Run(run_element, paragraph)
-    set_run_font(run, east_asia="宋体", latin="Arial")
-    run.font.size = Pt(10)
-    run.font.color.rgb = RGBColor.from_string("0563C1")
-    run.font.underline = True
-    return paragraph
-
-
-def _format_table(table):
-    table.style = "Table Grid"
-    table.alignment = WD_TABLE_ALIGNMENT.CENTER
-    table.autofit = False
-    for column, width in zip(table.columns, COLUMN_WIDTHS_CM):
-        column.width = Cm(width)
-    for row in table.rows:
-        for cell, width in zip(row.cells, COLUMN_WIDTHS_CM):
-            cell.width = Cm(width)
-            cell.vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.TOP
-            margins = OxmlElement("w:tcMar")
-            for side in ("top", "left", "bottom", "right"):
-                margin = OxmlElement(f"w:{side}")
-                margin.set(qn("w:w"), "90")
-                margin.set(qn("w:type"), "dxa")
-                margins.append(margin)
-            cell._tc.get_or_add_tcPr().append(margins)
-    repeat_header = OxmlElement("w:tblHeader")
-    repeat_header.set(qn("w:val"), "true")
-    table.rows[0]._tr.get_or_add_trPr().append(repeat_header)
-    for cell, heading in zip(table.rows[0].cells, HEADERS):
-        _cell_paragraph(cell, heading, bold=True, first=True)
-        shading = OxmlElement("w:shd")
-        shading.set(qn("w:fill"), "E8EDF2")
-        cell._tc.get_or_add_tcPr().append(shading)
-
-
 def build_argument_document(arguments: list[dict], topic: str, side: str):
-    """Build native Word tables; validation must precede this function."""
+    """Build the shared reference-based portrait table after validation."""
     doc = Document()
-    section = doc.sections[0]
-    section.orientation = WD_ORIENT.LANDSCAPE
-    section.page_width, section.page_height = Cm(29.7), Cm(21)
-    section.top_margin, section.bottom_margin = Cm(1.5), Cm(1.5)
-    section.left_margin, section.right_margin = Cm(1.5), Cm(1.5)
-    set_style_font(doc.styles["Normal"], "宋体", "Arial")
-    doc.styles["Normal"].font.size = Pt(10)
-    doc.styles["Normal"].paragraph_format.space_after = Pt(5)
-    for style_name in ("Title", "Heading 1"):
-        style = doc.styles[style_name]
-        set_style_font(style, "黑体", "Arial")
-        style.font.color.rgb = RGBColor(0, 0, 0)
-    doc.styles["Title"].font.size = Pt(20)
-    doc.styles["Heading 1"].font.size = Pt(13)
-    doc.styles["Heading 1"].paragraph_format.keep_with_next = True
     doc.core_properties.title = f"{topic} {side} 论据资料表"
-    doc.core_properties.subject = "华语辩论已核验论据资料表"
-    doc.core_properties.keywords = "辩论,论据,进攻,防守,证明"
-    title = doc.add_paragraph("论据资料表", style="Title")
-    title.paragraph_format.space_after = Pt(6)
-    doc.add_paragraph(f"辩题：{topic}    立场：{side}")
-    doc.add_paragraph("按进攻、防守、证明分类。同一编号出现在不同类别时，指向同一条论据。")
-    for category in CATEGORIES:
-        doc.add_paragraph(category, style="Heading 1")
-        selected = [argument for argument in arguments if category in argument["categories"]]
-        if not selected:
-            doc.add_paragraph(NO_MATERIAL_MESSAGE)
-            continue
-        table = doc.add_table(rows=1 + len(selected), cols=len(HEADERS))
-        _format_table(table)
-        for row, argument in zip(table.rows[1:], selected):
-            _cell_paragraph(row.cells[0], argument["id"], first=True)
-            _cell_paragraph(row.cells[1], argument["claim"], bold=True, first=True)
-            _cell_paragraph(row.cells[1], "材料：" + argument["material"])
-            _cell_paragraph(row.cells[2], argument["usage"], first=True)
-            _cell_paragraph(row.cells[3], argument["limitation"], first=True)
-            _cell_paragraph(row.cells[4], argument["verification_note"], first=True)
-            for number, source in enumerate(argument["sources"], 1):
-                _cell_paragraph(
-                    row.cells[4],
-                    f"[{number}] {source['author']}　{source['title']}（{source['date']}）",
-                )
-                _cell_hyperlink(row.cells[4], source["url"])
-        doc.add_paragraph().paragraph_format.space_after = Pt(2)
+    doc.core_properties.subject = "华语辩论论据资料表"
+    doc.core_properties.keywords = "辩论,资料,来源,核验"
+    append_material_table(doc, arguments, topic=topic, side=side, title='论据资料表')
     return doc
 
 
 def check_saved_table(output_path: Path):
     doc = Document(output_path)
-    if not any(len(table.rows) > 1 and any(cell.text.strip() for cell in table.rows[1].cells)
+    if not any(len(table.columns) == 3
+               and [cell.text for cell in table.rows[0].cells] == list(HEADERS)
+               and any(len(row._tr.tc_lst) == 3 and row.cells[0].text.strip() for row in table.rows[1:])
                for table in doc.tables):
         raise RuntimeError("生成的 DOCX 未包含非空论据表格。")
 

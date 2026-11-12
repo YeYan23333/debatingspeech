@@ -14,7 +14,7 @@ except ImportError:
 
 exporter = desktop_fixtures.exporter
 generator = desktop_fixtures.generator
-QUESTION = "是否将本次检索中已核验的论据，按“进攻、防守、证明”分类整理成资料表？"
+QUESTION = "是否将本次检索中已核验的论据，按参考样式整理成三列资料表，并注明进攻、防守、证明用途？"
 
 
 class ArgumentTableOfferTests(unittest.TestCase):

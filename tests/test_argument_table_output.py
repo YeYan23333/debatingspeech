@@ -90,7 +90,7 @@ class ArgumentTableOutputTests(unittest.TestCase):
         self.assertFalse(self.products.exists())
         self.assertEqual(list(self.root.rglob("*.docx")), [])
 
-    def test_groups_categories_in_order_and_preserves_same_id_and_sources(self):
+    def test_one_total_table_keeps_each_record_once_and_preserves_all_metadata(self):
         code, stdout, stderr = self.run_export(self.payload())
         self.assertEqual(code, 0, stderr)
         output = self.output_path()
@@ -100,22 +100,27 @@ class ArgumentTableOutputTests(unittest.TestCase):
         self.assertNotIn("是否生成", stdout)
         doc = Document(output)
         headings = [p.text for p in doc.paragraphs if p.style.name == "Heading 1"]
-        self.assertEqual(headings, ["进攻", "防守", "证明"])
-        self.assertEqual(len(doc.tables), 3)
-        self.assertEqual([table.rows[1].cells[0].text for table in doc.tables], ["A1", "B2", "A1"])
-        for table in doc.tables:
-            self.assertEqual([cell.text for cell in table.rows[0].cells], list(exporter.HEADERS))
-            row = table.rows[1]
-            self.assertIn(SOURCE_URL, row.cells[4].text)
-            self.assertIn("测试资料机构", row.cells[4].text)
-            self.assertIn("离线测试原始记录", row.cells[4].text)
-            self.assertIn("未标注日期", row.cells[4].text)
-            self.assertIn(ARGUMENT["usage"], row.cells[2].text)
-            self.assertIn(ARGUMENT["limitation"], row.cells[3].text)
-            self.assertIn(ARGUMENT["verification_note"], row.cells[4].text)
+        self.assertEqual(headings, ["一、总表", "二、怎么用", "三、风险提示"])
+        self.assertEqual(len(doc.tables), 1)
+        table = doc.tables[0]
+        self.assertEqual([cell.text for cell in table.rows[0].cells], list(exporter.HEADERS))
+        self.assertEqual(len(table.rows), 4)  # header, fallback group, two distinct records
+        self.assertEqual(table.rows[1].cells[0].text, '相关资料')
+        self.assertEqual(len(table.rows[1]._tr.tc_lst), 1)
+        self.assertIn('A1', table.rows[2].cells[0].text)
+        self.assertIn('B2', table.rows[3].cells[0].text)
+        self.assertIn('进攻、证明', table.rows[2].cells[0].text)
+        for row in table.rows[2:]:
+            self.assertIn("测试资料机构", row.cells[1].text)
+            self.assertIn("离线测试原始记录", row.cells[1].text)
+            self.assertIn("未标注日期", row.cells[1].text)
+            self.assertIn(ARGUMENT["verification_note"], row.cells[2].text)
+        prose = '\n'.join(p.text for p in doc.paragraphs)
+        self.assertIn(ARGUMENT['usage'], prose)
+        self.assertIn(ARGUMENT['limitation'], prose)
         self.assertIn(TOPIC, doc.core_properties.title)
 
-    def test_full_source_urls_are_external_word_hyperlinks_and_keep_wrapping(self):
+    def test_full_source_urls_remain_external_word_targets_with_short_wrapping_labels(self):
         self.assertEqual(self.run_export(self.payload())[0], 0)
         namespaces = {
             "w": "http://schemas.openxmlformats.org/wordprocessingml/2006/main",
@@ -133,41 +138,61 @@ class ArgumentTableOutputTests(unittest.TestCase):
             paragraph for paragraph in document_xml.findall(".//w:p", namespaces)
             if paragraph.find("w:hyperlink", namespaces) is not None
         ]
-        self.assertEqual(len(link_paragraphs), 3)
+        self.assertEqual(len(link_paragraphs), 2)  # once per record, not repeated by use category
         for paragraph in link_paragraphs:
             hyperlink = paragraph.find("w:hyperlink", namespaces)
             relationship = relationships[hyperlink.attrib[qn("r:id")]]
             self.assertEqual(relationship["Target"], SOURCE_URL)
             self.assertEqual(relationship["TargetMode"], "External")
             self.assertTrue(relationship["Type"].endswith("/hyperlink"))
-            self.assertEqual("".join(node.text or "" for node in hyperlink.findall(".//w:t", namespaces)), SOURCE_URL)
+            visible = "".join(node.text or "" for node in hyperlink.findall(".//w:t", namespaces))
+            self.assertIn('example.org', visible)
+            self.assertLess(len(visible), len(SOURCE_URL))
             self.assertEqual(paragraph.find("w:pPr/w:wordWrap", namespaces).attrib[qn("w:val")], "0")
 
-    def test_uses_a4_landscape_five_native_columns_and_repeating_header(self):
+    def test_reference_layout_is_portrait_three_columns_with_consistent_widths_and_repeated_header(self):
         self.assertEqual(self.run_export(self.payload())[0], 0)
         doc = Document(self.output_path())
         section = doc.sections[0]
-        self.assertEqual(section.orientation, WD_ORIENT.LANDSCAPE)
-        self.assertAlmostEqual(section.page_width / Cm(1), 29.7, places=2)
-        self.assertAlmostEqual(section.page_height / Cm(1), 21, places=2)
-        for table in doc.tables:
-            self.assertEqual(len(table.columns), 5)
-            self.assertFalse(table.autofit)
-            self.assertIsNotNone(table.rows[0]._tr.trPr.find(qn("w:tblHeader")))
-            self.assertTrue(all(cell.width > 0 for cell in table.rows[0].cells))
-            for cell in table.rows[0].cells:
-                self.assertTrue(cell.paragraphs[0].runs[0].bold)
+        self.assertEqual(section.orientation, WD_ORIENT.PORTRAIT)
+        self.assertAlmostEqual(section.page_width / Cm(1), 21, places=2)
+        self.assertAlmostEqual(section.page_height / Cm(1), 29.7, places=2)
+        self.assertAlmostEqual(section.top_margin / Cm(1), 2, places=2)
+        self.assertAlmostEqual(section.bottom_margin / Cm(1), 2, places=2)
+        self.assertAlmostEqual(section.left_margin / Cm(1), 1.9, places=2)
+        self.assertAlmostEqual(section.right_margin / Cm(1), 1.9, places=2)
+        table = doc.tables[0]
+        self.assertEqual(len(table.columns), 3)
+        self.assertFalse(table.autofit)
+        self.assertIsNotNone(table.rows[0]._tr.trPr.find(qn("w:tblHeader")))
+        body_width = section.page_width - section.left_margin - section.right_margin
+        self.assertLessEqual(sum(column.width for column in table.columns), body_width + 1270)
+        for column, width, cell in zip(table.columns, exporter.COLUMN_WIDTHS_CM, table.rows[2].cells):
+            self.assertAlmostEqual(column.width / Cm(1), width, places=2)
+            self.assertEqual(column.width, cell.width)
+        for cell in table.rows[0].cells:
+            self.assertTrue(cell.paragraphs[0].runs[0].bold)
+            self.assertEqual(cell._tc.tcPr.find(qn('w:shd')).get(qn('w:fill')), 'EDEDED')
+        group = table.rows[1].cells[0]
+        self.assertEqual(group._tc.tcPr.find(qn('w:gridSpan')).get(qn('w:val')), '3')
+        self.assertEqual(group._tc.tcPr.find(qn('w:shd')).get(qn('w:fill')), 'F5F0E6')
+        self.assertTrue(group.paragraphs[0].paragraph_format.keep_with_next)
+        for row in table.rows[2:]:
+            self.assertIsNotNone(row._tr.trPr.find(qn('w:cantSplit')))
+            self.assertIsNone(row.height)
 
-    def test_missing_categories_are_explicitly_empty_without_invented_rows(self):
+    def test_unselected_use_categories_do_not_create_empty_tables_or_invented_records(self):
         first = deepcopy(ARGUMENT)
         first["categories"] = ["证明"]
         code, _, stderr = self.run_export({"arguments": [first]})
         self.assertEqual(code, 0, stderr)
         doc = Document(self.output_path())
-        self.assertEqual([p.text for p in doc.paragraphs].count(exporter.NO_MATERIAL_MESSAGE), 2)
         self.assertEqual(len(doc.tables), 1)
-        self.assertEqual(len(doc.tables[0].rows), 2)
-        self.assertEqual(doc.tables[0].rows[1].cells[0].text, "A1")
+        self.assertEqual(len(doc.tables[0].rows), 3)
+        self.assertIn('A1', doc.tables[0].rows[2].cells[0].text)
+        self.assertIn('用途类别：证明', doc.tables[0].rows[2].cells[0].text)
+        self.assertNotIn('进攻', doc.tables[0].rows[2].cells[0].text)
+        self.assertNotIn(exporter.NO_MATERIAL_MESSAGE, '\n'.join(p.text for p in doc.paragraphs))
 
     def test_rejects_unverified_or_non_boolean_verification_flags(self):
         for flag in (False, "true", 1, None):
@@ -241,7 +266,7 @@ class ArgumentTableOutputTests(unittest.TestCase):
         code, _, stderr = self.run_export(changed, "--force")
         self.assertEqual(code, 0, stderr)
         doc = Document(output)
-        self.assertIn("显式覆盖后的测试论据", doc.tables[0].rows[1].cells[1].text)
+        self.assertIn("显式覆盖后的测试论据", doc.tables[0].rows[2].cells[0].text)
 
     def test_custom_directory_is_flat_and_filename_uses_full_topic_cleaning(self):
         self.assertEqual(self.run_export(self.payload())[0], 0)

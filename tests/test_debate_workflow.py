@@ -107,8 +107,10 @@ class WorkflowTests(unittest.TestCase):
         output = self.products / '认知-发展--正方-攻防稿.docx'
         doc = Document(output)
         self.assertEqual(len(doc.tables), 1)
-        row = doc.tables[0].rows[1].cells
-        self.assertIn('测试用短引', row[2].text)
+        row = doc.tables[0].rows[2].cells
+        self.assertEqual([cell.text for cell in doc.tables[0].rows[0].cells], ['可用资料摘要', '资料来源', '可核验链接'])
+        self.assertIn('测试用短引', row[0].text)
+        self.assertIn('测试单位', row[1].text)
         with zipfile.ZipFile(output) as z:
             xml = z.read('word/document.xml').decode('utf8')
             rels = z.read('word/_rels/document.xml.rels').decode('utf8')

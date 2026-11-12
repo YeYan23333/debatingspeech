@@ -27,7 +27,7 @@ except ImportError as exc:
 
 
 SUCCESS_MESSAGE = "请在桌面上的products文件夹中检查，如不满意请继续提出您的修改意见，我将继续为您修改"
-ARGUMENT_TABLE_OFFER = "是否将本次检索中已核验的论据，按“进攻、防守、证明”分类整理成资料表？"
+ARGUMENT_TABLE_OFFER = "是否将本次检索中已核验的论据，按参考样式整理成三列资料表，并注明进攻、防守、证明用途？"
 
 
 def _windows_desktop_directory() -> Path:
